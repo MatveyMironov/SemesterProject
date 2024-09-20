@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b934aba60429314caee76a8d2f54d27, type: 3}
+  m_Name: Building2Blueprint
+  m_EditorClassIdentifier: 
+  <BuildingName>k__BackingField: Building 2
+  <BuildingSize>k__BackingField: {x: 4, y: 4}
+  <Building>k__BackingField: {fileID: 7641434608899673337, guid: 20d7f8f3152a972459c98cd44bca4cae, type: 3}
+  <BuildingPreview>k__BackingField: {fileID: 4619047765757668986, guid: d6747e0508eaef843b00d8229347d3fe, type: 3}
