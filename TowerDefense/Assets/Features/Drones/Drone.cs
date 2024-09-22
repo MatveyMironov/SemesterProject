@@ -8,4 +8,9 @@ public class Drone : MonoBehaviour
     {
         droneMovement.Tick();
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }
