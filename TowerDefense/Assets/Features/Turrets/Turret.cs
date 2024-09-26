@@ -3,7 +3,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [field: Space]
-    [field: SerializeField] public DetectionSystem DetectionSystem { get; private set; } = new DetectionSystem();
+    [field: SerializeField] public TargetDetection TargetDetection { get; private set; } = new TargetDetection();
     [field: SerializeField] public TargetTracking TargetTracking { get; private set; } = new TargetTracking();
 
     public bool IsActivated;
@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
 
         if (IsActivated)
         {
-            if (DetectionSystem.AvailableTargets.Count > 0)
+            if (TargetDetection.AvailableTargets.Count > 0)
             {
                 Gizmos.color = combatColor;
             }
@@ -35,7 +35,7 @@ public class Turret : MonoBehaviour
         {
             Gizmos.color = inactiveColor;
         }
-        Gizmos.DrawSphere(transform.position + DetectionSystem.SensorOffset, DetectionSystem.DetectionRadius);
+        Gizmos.DrawSphere(transform.position + TargetDetection.SensorOffset, TargetDetection.DetectionRadius);
     }
 #endif
 }

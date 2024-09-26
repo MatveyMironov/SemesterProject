@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SelectingTarget_State : IState
 {
-    private DetectionSystem _detectionSystem;
+    private TargetDetection _detectionSystem;
 
-    public SelectingTarget_State(DetectionSystem detectionSystem)
+    public SelectingTarget_State(TargetDetection detectionSystem)
     {
         _detectionSystem = detectionSystem;
     }

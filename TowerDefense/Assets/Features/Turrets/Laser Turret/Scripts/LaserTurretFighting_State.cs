@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class LaserTurretFighting_State : IState
 {
-    private DetectionSystem _detectionSystem;
+    private TargetDetection _detectionSystem;
     private TargetTracking _targetTracking;
     private LaserGun _beamGun;
 
-    public LaserTurretFighting_State(DetectionSystem detectionSystem, TargetTracking targetTracking, LaserGun beamGun)
+    public LaserTurretFighting_State(TargetDetection detectionSystem, TargetTracking targetTracking, LaserGun beamGun)
     {
         _detectionSystem = detectionSystem;
         _targetTracking = targetTracking;
@@ -42,7 +42,7 @@ public class LaserTurretFighting_State : IState
         targetTracking.TrackTarget(target.transform);
     }
 
-    private bool CheckAim(LaserGun beamGun, DetectionSystem detectionSystem)
+    private bool CheckAim(LaserGun beamGun, TargetDetection detectionSystem)
     {
         if (Physics.Raycast(beamGun.muzzle.position, beamGun.muzzle.forward, out RaycastHit hit))
         {

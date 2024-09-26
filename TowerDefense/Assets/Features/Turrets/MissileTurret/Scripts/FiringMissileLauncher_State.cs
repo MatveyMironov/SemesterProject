@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class FiringMissileLauncher_State : IState
 {
-    private DetectionSystem _detectionSystem;
+    private TargetDetection _detectionSystem;
     private TargetTracking _targetTracking;
     private MissileLauncher _missileLauncher;
 
-    public FiringMissileLauncher_State(DetectionSystem detetctionsystem, TargetTracking targetTracking, MissileLauncher missileLauncher)
+    public FiringMissileLauncher_State(TargetDetection detetctionsystem, TargetTracking targetTracking, MissileLauncher missileLauncher)
     {
         _detectionSystem = detetctionsystem;
         _targetTracking = targetTracking;

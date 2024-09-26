@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class DetectionSystem
+public class TargetDetection
 {
     [field: Tooltip("If you want the sensor to be not in the center of the object")]
     [field: SerializeField] public Vector3 SensorOffset { get; private set; }
