@@ -10,9 +10,9 @@ public class ConstructionMenu : MonoBehaviour
     [SerializeField] private Button missileTurretButton;
     [SerializeField] private Button plasmaTurretButton;
 
-    public static event Action OnLaserTurretClicked;
-    public static event Action OnMissileTurretClicked;
-    public static event Action OnPlasmaTurretClicked;
+    public event Action OnLaserTurretClicked;
+    public event Action OnMissileTurretClicked;
+    public event Action OnPlasmaTurretClicked;
 
     private void Awake()
     {
@@ -31,17 +31,5 @@ public class ConstructionMenu : MonoBehaviour
     public void CloseMenu()
     {
         menuWindow.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        Construction.OnConstructionModeEntered += OpenMenu;
-        Construction.OnConstructionModeExited += CloseMenu;
-    }
-
-    private void OnDisable()
-    {
-        Construction.OnConstructionModeEntered -= OpenMenu;
-        Construction.OnConstructionModeExited -= CloseMenu;
     }
 }

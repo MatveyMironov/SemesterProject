@@ -60,9 +60,9 @@ public class MachineGun
     {
         if (Physics.Raycast(shotRay, out RaycastHit hit))
         {
-            if (hit.collider.TryGetComponent(out Health health))
+            if (hit.collider.TryGetComponent(out DroneHealth health))
             {
-                health.DealDamage(Damage);
+                health.SubtractHealth(Damage);
             }
 
             return hit.point;

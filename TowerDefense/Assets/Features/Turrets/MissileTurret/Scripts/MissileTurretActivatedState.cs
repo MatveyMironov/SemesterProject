@@ -33,7 +33,7 @@ public class MissileTurretActivatedState : IState
 
     public void Tick()
     {
-        _turret.DetectionSystem.UseSensor(_turret.transform, Unit.factions.Rival);
+        _turret.DetectionSystem.UseSensor(_turret.transform);
 
         _stateMachine.Tick();
     }

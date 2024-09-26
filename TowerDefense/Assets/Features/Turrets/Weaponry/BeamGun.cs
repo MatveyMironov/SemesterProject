@@ -59,13 +59,13 @@ public class BeamGun
     {
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.TryGetComponent(out Health health))
+            if (hit.collider.TryGetComponent(out DroneHealth health))
             {
                 _accumulatedDamage += DamagePerSecond * Time.deltaTime;
 
                 if (_accumulatedDamage >= 1)
                 {
-                    health.DealDamage(1);
+                    health.SubtractHealth(1);
                 }
             }
 

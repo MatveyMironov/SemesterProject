@@ -6,9 +6,7 @@ public class InputListener : MonoBehaviour
 {
     private InputActions _inputActions;
 
-    public static event Action OnPauseToggled;
-    public static event Action OnConstructionToggled;
-    public static event Action OnSelected;
+    [SerializeField] private Construction construction;
 
     private void Awake()
     {
@@ -21,17 +19,18 @@ public class InputListener : MonoBehaviour
 
     private void OnTogglePause(InputAction.CallbackContext callbackContext)
     {
-        OnPauseToggled?.Invoke();
+        
     }
 
     private void OnToggleConstruction(InputAction.CallbackContext callbackContext)
     {
-        OnConstructionToggled?.Invoke();
+        Debug.Log("toggle construction");
+        construction.ToggleConstructionMode();
     }
 
     private void OnSelect(InputAction.CallbackContext callbackContext)
     {
-        OnSelected?.Invoke();
+        construction.SelectConstructionSite();
     }
 
     private void OnEnable()

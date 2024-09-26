@@ -15,10 +15,10 @@ public class Construction : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask constructionLayers;
 
-    private bool _isConstructionModeEntered;
+    [Space]
+    [SerializeField] private ConstructionMenu constructionMenu;
 
-    public static event Action OnConstructionModeEntered;
-    public static event Action OnConstructionModeExited;
+    private bool _isConstructionModeEntered;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class Construction : MonoBehaviour
     }
 
     #region Construction Mode
-    private void ToggleConstructionMode()
+    public void ToggleConstructionMode()
     {
         if (_isConstructionModeEntered)
         {
@@ -48,7 +48,7 @@ public class Construction : MonoBehaviour
             }
         }
 
-        OnConstructionModeEntered?.Invoke();
+        constructionMenu.OpenMenu();
         _isConstructionModeEntered = true;
     }
 
@@ -64,12 +64,12 @@ public class Construction : MonoBehaviour
 
         AbortBuilding();
 
-        OnConstructionModeExited?.Invoke();
+        constructionMenu.CloseMenu();
         _isConstructionModeEntered = false;
     }
     #endregion
 
-    private void SelectConstructionSite()
+    public void SelectConstructionSite()
     {
         if (!_isConstructionModeEntered)
             return;
@@ -115,22 +115,16 @@ public class Construction : MonoBehaviour
 
     private void OnEnable()
     {
-        InputListener.OnConstructionToggled += ToggleConstructionMode;
-        InputListener.OnSelected += SelectConstructionSite;
-
-        ConstructionMenu.OnLaserTurretClicked += BuildLaserTurret;
-        ConstructionMenu.OnMissileTurretClicked += BuildMissileTurret;
-        ConstructionMenu.OnPlasmaTurretClicked += BuildPlasmaTurret;
+        constructionMenu.OnLaserTurretClicked += BuildLaserTurret;
+        constructionMenu.OnMissileTurretClicked += BuildMissileTurret;
+        constructionMenu.OnPlasmaTurretClicked += BuildPlasmaTurret;
     }
 
     private void OnDisable()
     {
-        InputListener.OnConstructionToggled -= ToggleConstructionMode;
-        InputListener.OnSelected -= SelectConstructionSite;
-
-        ConstructionMenu.OnLaserTurretClicked -= BuildLaserTurret;
-        ConstructionMenu.OnMissileTurretClicked -= BuildMissileTurret;
-        ConstructionMenu.OnPlasmaTurretClicked -= BuildPlasmaTurret;
+        constructionMenu.OnLaserTurretClicked -= BuildLaserTurret;
+        constructionMenu.OnMissileTurretClicked -= BuildMissileTurret;
+        constructionMenu.OnPlasmaTurretClicked -= BuildPlasmaTurret;
     }
 
     private void BuildLaserTurret()

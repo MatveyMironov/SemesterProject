@@ -104,9 +104,9 @@ public class Missile : MonoBehaviour
 
         foreach (Collider collider in strickenObjects)
         {
-            if (collider.TryGetComponent(out Health health))
+            if (collider.TryGetComponent(out DroneHealth health))
             {
-                health.DealDamage(MissileCharacteristics.ExplosionDamage);
+                health.SubtractHealth(MissileCharacteristics.ExplosionDamage);
             }
         }
 
