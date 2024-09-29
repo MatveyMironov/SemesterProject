@@ -32,12 +32,17 @@ public class DroneMovement
     private void MoveTo(Vector3 tragetPosition)
     {
         Vector3 lookPosition = tragetPosition - drone.position;
-        Quaternion lookRotation = Quaternion.LookRotation(lookPosition);
 
-        if (drone.rotation != lookRotation)
+        if (lookPosition != Vector3.zero)
         {
-            drone.rotation = lookRotation;
+            Quaternion lookRotation = Quaternion.LookRotation(lookPosition);
+
+            if (drone.rotation != lookRotation)
+            {
+                drone.rotation = lookRotation;
+            }
         }
+        
 
         drone.position = Vector3.MoveTowards(drone.position, tragetPosition, movementSpeed * Time.deltaTime);
     }
