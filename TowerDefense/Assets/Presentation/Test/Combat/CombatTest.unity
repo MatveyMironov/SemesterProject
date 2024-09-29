@@ -191,6 +191,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2016838626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &321566902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 55212412555400277, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_Name
+      value: Light drone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 513981737}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281656454}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 929337336}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 922601374}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1449172616}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 442246379}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1609289316}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 328101497}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 301703552}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 674081768}
+    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: <DefaultHealth>k__BackingField
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0885b0f91f28d154e907c3ea162e0449, type: 3}
 --- !u!1001 &326827337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +558,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2016838626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &364117865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 55212412555400277, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_Name
+      value: Light drone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 513981737}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281656454}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 929337336}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 922601374}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1449172616}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 442246379}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1609289316}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 328101497}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 301703552}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 674081768}
+    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: <DefaultHealth>k__BackingField
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0885b0f91f28d154e907c3ea162e0449, type: 3}
 --- !u!1 &442246378
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +910,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &629216604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 55212412555400277, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_Name
+      value: Light drone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 513981737}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281656454}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 929337336}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 922601374}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1449172616}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 442246379}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1609289316}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 328101497}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 301703552}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 674081768}
+    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: <DefaultHealth>k__BackingField
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0885b0f91f28d154e907c3ea162e0449, type: 3}
 --- !u!1 &674081767
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +1109,8 @@ MonoBehaviour:
     type: 3}
   missileTurretPrefab: {fileID: 1840398199433101381, guid: 99c551e94e529b041ae1a8655211ebc7,
     type: 3}
-  plasmaTurretPrefab: {fileID: 0}
+  plasmaTurretPrefab: {fileID: 2175359623618865679, guid: 56b2cc13d40f88846908831fcadc3bca,
+    type: 3}
   mainCamera: {fileID: 1194205359}
   constructionLayers:
     serializedVersion: 2
@@ -1732,6 +2117,134 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9fbc150f2f20324e810bcbfaba60343, type: 3}
+--- !u!1001 &1821298902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 55212412555400277, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_Name
+      value: Light drone (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 32.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5404050848811460911, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 513981737}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1281656454}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 929337336}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 922601374}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1449172616}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 442246379}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1609289316}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 328101497}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 301703552}
+    - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: droneMovement.waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 674081768}
+    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
+        type: 3}
+      propertyPath: <DefaultHealth>k__BackingField
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0885b0f91f28d154e907c3ea162e0449, type: 3}
 --- !u!1001 &1963917858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2105,3 +2618,7 @@ SceneRoots:
   - {fileID: 825164654}
   - {fileID: 2016838626}
   - {fileID: 4805535145865258778}
+  - {fileID: 321566902}
+  - {fileID: 629216604}
+  - {fileID: 364117865}
+  - {fileID: 1821298902}
