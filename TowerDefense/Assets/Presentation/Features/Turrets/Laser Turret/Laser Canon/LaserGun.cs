@@ -2,34 +2,30 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class LaserGun
+public class LaserGun : Weapon
 {
     [SerializeField] public Transform muzzle;
+
+    [Header("Beam")]
     [SerializeField] public int damagePerSecond;
     [SerializeField] private float maxEmittingTime;
-    [SerializeField] private float rechargingTime;
 
     [Header("Effects")]
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip firingSound;
     [SerializeField] public LineRenderer beamEffect;
 
-    private bool _isFiring;
+    private bool _isEmitting;
     private float _emittingTimer;
-
-    private bool _isRecharging;
-    private float _rechargingTimer;
 
     private float _accumulatedDamage;
 
     #region Fire Control
-    public void FunctioningTick()
+    public override void FunctioningTick()
     {
-        if (_isRecharging)
-        {
-            Recharge();
-        }
-        else if (_isFiring)
+        base.FunctioningTick();
+
+        if (_isEmitting)
         {
             EmitBeam();
         }
@@ -37,9 +33,10 @@ public class LaserGun
 
     public void OpenFire()
     {
-        if (_isFiring || _isRecharging) 
+        if (!ReadyToFire || _isEmitting) 
             return;
-        _isFiring = true;
+
+        _isEmitting = true;
 
         beamEffect.enabled = true;
         audioSource.clip = firingSound;
@@ -48,12 +45,12 @@ public class LaserGun
 
     public void CeaseFire()
     {
-        if (!_isFiring) 
+        if (!_isEmitting) 
             return;
-        _isFiring = false;
+        _isEmitting = false;
 
         _emittingTimer = 0;
-        _isRecharging = true;
+        _needsRecharging = true;
 
         beamEffect.enabled = false;
         audioSource.Stop();
@@ -102,14 +99,4 @@ public class LaserGun
         beamEffect.SetPosition(1, beamEffect.transform.InverseTransformPoint(impactPoint));
     }
     #endregion
-
-    private void Recharge()
-    {
-        _rechargingTimer += Time.deltaTime;
-        if (_rechargingTimer >= rechargingTime)
-        {
-            _isRecharging = false;
-            _rechargingTimer = 0;
-        }
-    }
 }

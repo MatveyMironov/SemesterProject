@@ -85,19 +85,19 @@ MonoBehaviour:
     horizontalHinge: {fileID: 7247401485021692819}
     minHorizontalAngle: 0
     maxHorizontalAngle: 360
-    horizontalRotationSpeed: 180
+    horizontalTurningSpeed: 180
     verticalHinge: {fileID: 7925901411861719409}
     minVerticalAngle: -15
     maxVerticalAngle: 15
-    verticalRotationSpeed: 180
+    verticalTurningSpeed: 180
   IsActivated: 1
   showGizmos: 1
   inactiveColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   activeColor: {r: 1, g: 0.8, b: 0, a: 0.39215687}
   combatColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   <PlasmaGun>k__BackingField:
-    muzzle: {fileID: 2241034608169395954}
     rechargingTime: 5
+    muzzle: {fileID: 2241034608169395954}
     plasmoidPrefab: {fileID: 8400862676475099532, guid: e811de19f08fe8642bc64c43e639f688,
       type: 3}
     plasmoidParameters:

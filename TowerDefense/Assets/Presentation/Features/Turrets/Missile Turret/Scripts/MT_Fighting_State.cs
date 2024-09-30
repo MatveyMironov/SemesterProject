@@ -27,7 +27,7 @@ public class MT_Fighting_State : IState
 
         _missileLauncher.FunctioningTick();
 
-        if (_missileLauncher.ReadyToLaunch)
+        if (_missileLauncher.ReadyToFire)
         {
             _missileLauncher.LaunchMissile(_detection.SelectedTarget.transform);
         }

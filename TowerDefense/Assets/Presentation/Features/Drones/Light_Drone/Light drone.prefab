@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droneMovement:
     drone: {fileID: 5404050848811460911}
-    movementSpeed: 1
+    movementSpeed: 3
     waypoints:
     - {fileID: 0}
     - {fileID: 0}

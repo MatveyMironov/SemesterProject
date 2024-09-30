@@ -4,9 +4,11 @@ public abstract class Turret : MonoBehaviour
 {
     [field: Space]
     [field: SerializeField] public TargetDetection TargetDetection { get; private set; } = new();
+    [field: Space]
     [field: SerializeField] public TargetTracking TargetTracking { get; private set; } = new();
 
-    public bool IsActivated;
+    [field: Space]
+    [field: SerializeField] public bool IsActivated;
 
 #if UNITY_EDITOR
     [Space]

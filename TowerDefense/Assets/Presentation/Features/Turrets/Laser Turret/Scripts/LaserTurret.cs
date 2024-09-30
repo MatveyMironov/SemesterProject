@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LaserTurret : Turret
 {
+    [field: Space]
     [field: SerializeField] public LaserGun LaserGun { get; private set; } = new();
 
     private StateMachine _stateMachine;

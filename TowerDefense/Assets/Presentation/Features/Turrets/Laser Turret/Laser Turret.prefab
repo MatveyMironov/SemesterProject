@@ -151,21 +151,21 @@ MonoBehaviour:
     horizontalHinge: {fileID: 3386186456874914215}
     minHorizontalAngle: 0
     maxHorizontalAngle: 360
-    horizontalRotationSpeed: 180
+    horizontalTurningSpeed: 180
     verticalHinge: {fileID: 3667449257179832528}
     minVerticalAngle: -20
     maxVerticalAngle: 20
-    verticalRotationSpeed: 180
+    verticalTurningSpeed: 180
   IsActivated: 1
   showGizmos: 1
   inactiveColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   activeColor: {r: 1, g: 0.8, b: 0, a: 0.39215687}
   combatColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   <LaserGun>k__BackingField:
+    rechargingTime: 5
     muzzle: {fileID: 3536985359900069994}
     damagePerSecond: 10
     maxEmittingTime: 5
-    rechargingTime: 5
     audioSource: {fileID: 711201597770100215}
     firingSound: {fileID: 8300000, guid: 001636569b9b2004f93b331e46dd10cd, type: 3}
     beamEffect: {fileID: 214426667872594110}

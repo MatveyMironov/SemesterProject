@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class MissileLauncher
+public class MissileLauncher : Weapon
 {
     [Tooltip("Pods launch missiles in a cycle one after another")]
     [SerializeField] private List<MissilePod> missilePods = new();
-
-    [Header("Launcher")]
-    [Tooltip("Time between two individual missiles can be launched")]
-    [SerializeField] private float launchCooldown;
 
     [Header("Missile")]
     [SerializeField] private Missile missilePrefab;
@@ -22,24 +18,9 @@ public class MissileLauncher
 
     private int _currentPodIndex = 0;
 
-    private bool _isOnCooldown = false;
-    private float _cooldownTimer;
-
-    public bool ReadyToLaunch { get; private set; }
-
-    public void FunctioningTick()
-    {
-        ReadyToLaunch = CheckIfReadyToLaunch();
-
-        if (_isOnCooldown)
-        {
-            LauncherCooldown();
-        }
-    }
-
     public void LaunchMissile(Transform target)
     {
-        if (!ReadyToLaunch)
+        if (!ReadyToFire)
             return;
 
         MissilePod missilePod = FindMissilePod();
@@ -51,8 +32,7 @@ public class MissileLauncher
         missile.SetParameters(missileParameters);
         missile.Program(program);
 
-        _isOnCooldown = true;
-
+        _needsRecharging = true;
     }
 
     private MissilePod FindMissilePod()
@@ -71,21 +51,6 @@ public class MissileLauncher
     private void PlayLaunchEffects()
     {
 
-    }
-
-    private void LauncherCooldown()
-    {
-        _cooldownTimer += Time.deltaTime;
-        if (_cooldownTimer >= launchCooldown)
-        {
-            _isOnCooldown = false;
-            _cooldownTimer = 0;
-        }
-    }
-
-    private bool CheckIfReadyToLaunch()
-    {
-        return !(_isOnCooldown);
     }
 
     [Serializable]

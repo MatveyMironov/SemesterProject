@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MissileTurret : Turret
 {
+    [field: Space]
     [field: SerializeField] public MissileLauncher MissileLauncher { get; private set; } = new();
 
     private StateMachine _stateMachine;

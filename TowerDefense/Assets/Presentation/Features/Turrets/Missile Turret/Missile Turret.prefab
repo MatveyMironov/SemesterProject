@@ -244,17 +244,18 @@ MonoBehaviour:
     horizontalHinge: {fileID: 8429734622718325984}
     minHorizontalAngle: 0
     maxHorizontalAngle: 360
-    horizontalRotationSpeed: 180
+    horizontalTurningSpeed: 180
     verticalHinge: {fileID: 0}
     minVerticalAngle: 0
     maxVerticalAngle: 0
-    verticalRotationSpeed: 0
+    verticalTurningSpeed: 0
   IsActivated: 1
   showGizmos: 1
   inactiveColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   activeColor: {r: 1, g: 0.8, b: 0, a: 0.39215687}
   combatColor: {r: 1, g: 0, b: 0, a: 0.39215687}
   <MissileLauncher>k__BackingField:
+    rechargingTime: 1
     missilePods:
     - <MissileSpawn>k__BackingField: {fileID: 1790692364793567080}
       <MissileAttackPosition>k__BackingField: {fileID: 4353995408582930200}
@@ -262,11 +263,10 @@ MonoBehaviour:
     - <MissileSpawn>k__BackingField: {fileID: 1653565979551182768}
       <MissileAttackPosition>k__BackingField: {fileID: 2332851028340859954}
       <MissileLaunchEffect>k__BackingField: {fileID: 0}
-    launchCooldown: 1
     missilePrefab: {fileID: 9047181280845537842, guid: 3849be2dc59ac9045962b7675b217294,
       type: 3}
-    missileCharateristics:
-      <MovementSpeed>k__BackingField: 10
+    missileParameters:
+      <MovementSpeed>k__BackingField: 20
       <AngularSpeed>k__BackingField: 720
       <Damage>k__BackingField: 50
       <FlightSound>k__BackingField: {fileID: 0}
