@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: LaserTurret
   m_EditorClassIdentifier: 
   <TargetDetectionParameters>k__BackingField:
-    <SensorOffset>k__BackingField: {x: 0, y: 0, z: 0}
-    <DetectionRadius>k__BackingField: 0
+    <DetectionRadius>k__BackingField: 10
   <TargetTrackingParameters>k__BackingField:
     <MinHorizontalAngle>k__BackingField: 0
-    <MaxHorizontalAngle>k__BackingField: 0
-    <HorizontalTurningSpeed>k__BackingField: 0
-    <MinVerticalAngle>k__BackingField: 0
-    <MaxVerticalAngle>k__BackingField: 0
-    <VerticalTurningSpeed>k__BackingField: 0
+    <MaxHorizontalAngle>k__BackingField: 360
+    <HorizontalTurningSpeed>k__BackingField: 180
+    <MinVerticalAngle>k__BackingField: -15
+    <MaxVerticalAngle>k__BackingField: 15
+    <VerticalTurningSpeed>k__BackingField: 180
+  <LaserGunParameters>k__BackingField:
+    <RechargingTime>k__BackingField: 5
+    <DamagePerSecond>k__BackingField: 50
+    <MaxEmittingTime>k__BackingField: 2

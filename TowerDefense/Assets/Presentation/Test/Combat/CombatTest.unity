@@ -256,8 +256,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
-      propertyPath: droneMovement.movementSpeed
-      value: 3
+      propertyPath: droneMovement.waypoints.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
@@ -309,11 +309,6 @@ PrefabInstance:
       propertyPath: droneMovement.waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 674081768}
-    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
-        type: 3}
-      propertyPath: <DefaultHealth>k__BackingField
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -623,8 +618,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
-      propertyPath: droneMovement.movementSpeed
-      value: 3
+      propertyPath: droneMovement.waypoints.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
@@ -676,11 +671,6 @@ PrefabInstance:
       propertyPath: droneMovement.waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 674081768}
-    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
-        type: 3}
-      propertyPath: <DefaultHealth>k__BackingField
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -975,8 +965,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
-      propertyPath: droneMovement.movementSpeed
-      value: 3
+      propertyPath: droneMovement.waypoints.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
@@ -1028,11 +1018,6 @@ PrefabInstance:
       propertyPath: droneMovement.waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 674081768}
-    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
-        type: 3}
-      propertyPath: <DefaultHealth>k__BackingField
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2182,8 +2167,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
-      propertyPath: droneMovement.movementSpeed
-      value: 3
+      propertyPath: droneMovement.waypoints.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
@@ -2235,11 +2220,6 @@ PrefabInstance:
       propertyPath: droneMovement.waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 674081768}
-    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
-        type: 3}
-      propertyPath: <DefaultHealth>k__BackingField
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2538,8 +2518,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
-      propertyPath: droneMovement.movementSpeed
-      value: 3
+      propertyPath: droneMovement.waypoints.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6219708256437521687, guid: 0885b0f91f28d154e907c3ea162e0449,
         type: 3}
@@ -2591,11 +2571,6 @@ PrefabInstance:
       propertyPath: droneMovement.waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 674081768}
-    - target: {fileID: 7689660991720852844, guid: 0885b0f91f28d154e907c3ea162e0449,
-        type: 3}
-      propertyPath: <DefaultHealth>k__BackingField
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

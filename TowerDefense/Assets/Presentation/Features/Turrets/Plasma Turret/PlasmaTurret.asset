@@ -13,11 +13,25 @@ MonoBehaviour:
   m_Name: PlasmaTurret
   m_EditorClassIdentifier: 
   <TargetDetectionParameters>k__BackingField:
-    <DetectionRadius>k__BackingField: 0
+    <DetectionRadius>k__BackingField: 10
   <TargetTrackingParameters>k__BackingField:
     <MinHorizontalAngle>k__BackingField: 0
-    <MaxHorizontalAngle>k__BackingField: 0
-    <HorizontalTurningSpeed>k__BackingField: 0
-    <MinVerticalAngle>k__BackingField: 0
-    <MaxVerticalAngle>k__BackingField: 0
-    <VerticalTurningSpeed>k__BackingField: 0
+    <MaxHorizontalAngle>k__BackingField: 360
+    <HorizontalTurningSpeed>k__BackingField: 180
+    <MinVerticalAngle>k__BackingField: -15
+    <MaxVerticalAngle>k__BackingField: 15
+    <VerticalTurningSpeed>k__BackingField: 180
+  <PlasmaGunParameters>k__BackingField:
+    <RechargingTime>k__BackingField: 3
+    <PlasmoidPrefab>k__BackingField: {fileID: 8400862676475099532, guid: e811de19f08fe8642bc64c43e639f688,
+      type: 3}
+    <PlasmoidParameters>k__BackingField:
+      <Speed>k__BackingField: 15
+      <ExplosionRadius>k__BackingField: 3
+      <ExplosionDamage>k__BackingField: 25
+      <PlasmaCloudRadius>k__BackingField: 3
+      <PlasmaCloudDPS>k__BackingField: 15
+      <PlasmaCloudDecayTime>k__BackingField: 3
+      <AffectedLayers>k__BackingField:
+        serializedVersion: 2
+        m_Bits: 4294967295
