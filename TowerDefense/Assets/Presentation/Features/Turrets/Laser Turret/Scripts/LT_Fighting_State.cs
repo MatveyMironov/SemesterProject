@@ -43,7 +43,7 @@ public class LT_Fighting_State : IState
 
     private bool CheckAim(LaserGun laserGun, TargetDetection detection)
     {
-        if (Physics.Raycast(laserGun.muzzle.position, laserGun.muzzle.forward, out RaycastHit hit))
+        if (Physics.Raycast(laserGun.Muzzle.position, laserGun.Muzzle.forward, out RaycastHit hit))
         {
             if (hit.collider.TryGetComponent(out Drone unit))
             {

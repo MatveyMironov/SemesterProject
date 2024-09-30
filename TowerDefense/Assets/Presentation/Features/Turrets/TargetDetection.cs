@@ -2,27 +2,31 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 public class TargetDetection
 {
-    [field: Tooltip("If you want the sensor to be not in the origin of the object")]
-    [field: SerializeField] public Vector3 SensorOffset { get; private set; }
-    [field: SerializeField] public float DetectionRadius { get; private set; }
+    private Transform _sensor;
+    private DetectionParameters _parameters;
+
+    public TargetDetection(Transform sensor, DetectionParameters parameters)
+    {
+        _sensor = sensor;
+        _parameters = parameters;
+    }
 
     public List<Drone> AvailableTargets { get; private set; } = new();
     public Drone SelectedTarget { get; set; }
 
-    public void UseSensor(Transform sensor)
+    public void UseSensor()
     {
-        DetectTargets(sensor);
+        DetectTargets();
         CheckSelectedTarget();
     }
 
-    private void DetectTargets(Transform sensor)
+    private void DetectTargets()
     {
         List<Drone> detectedTargets = new List<Drone>();
 
-        Collider[] possibleTargets = Physics.OverlapSphere(sensor.position + SensorOffset, DetectionRadius);
+        Collider[] possibleTargets = Physics.OverlapSphere(_sensor.position, _parameters.DetectionRadius);
         foreach (Collider possibleTarget in possibleTargets)
         {
             if (possibleTarget.TryGetComponent(out Drone potentialTarget))
@@ -40,5 +44,11 @@ public class TargetDetection
         {
             SelectedTarget = null;
         }
+    }
+
+    [Serializable]
+    public class DetectionParameters
+    {
+        [field: SerializeField] public float DetectionRadius { get; private set; }
     }
 }

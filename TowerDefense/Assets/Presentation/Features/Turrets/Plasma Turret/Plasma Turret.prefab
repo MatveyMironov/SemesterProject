@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536218204082634475}
+  - component: {fileID: -8159128879128124052}
   - component: {fileID: 2175359623618865679}
   m_Layer: 0
   m_Name: Plasma Turret
@@ -63,8 +64,105 @@ Transform:
   m_Children:
   - {fileID: 5389018173768379151}
   - {fileID: 7682797021924339564}
+  - {fileID: 1577060034084714217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &-8159128879128124052
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027729775905829120}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2175359623618865679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,41 +175,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1719edb45f3a5884f9c20cf33665b3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TargetDetection>k__BackingField:
-    <SensorOffset>k__BackingField: {x: 0, y: 1, z: 0}
-    <DetectionRadius>k__BackingField: 10
-  <TargetTracking>k__BackingField:
-    muzzle: {fileID: 2241034608169395954}
-    horizontalHinge: {fileID: 7247401485021692819}
-    minHorizontalAngle: 0
-    maxHorizontalAngle: 360
-    horizontalTurningSpeed: 180
-    verticalHinge: {fileID: 7925901411861719409}
-    minVerticalAngle: -15
-    maxVerticalAngle: 15
-    verticalTurningSpeed: 180
+  parameters: {fileID: 11400000, guid: 2075aef3bd23b494aac12214546cdf72, type: 2}
+  detectionSensor: {fileID: 1577060034084714217}
+  trackingTransforms:
+    <Muzzle>k__BackingField: {fileID: 2241034608169395954}
+    <HorizontalHinge>k__BackingField: {fileID: 7247401485021692819}
+    <VerticalHinge>k__BackingField: {fileID: 7925901411861719409}
   IsActivated: 1
   showGizmos: 1
-  inactiveColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-  activeColor: {r: 1, g: 0.8, b: 0, a: 0.39215687}
-  combatColor: {r: 1, g: 0, b: 0, a: 0.39215687}
-  <PlasmaGun>k__BackingField:
-    rechargingTime: 5
-    muzzle: {fileID: 2241034608169395954}
-    plasmoidPrefab: {fileID: 8400862676475099532, guid: e811de19f08fe8642bc64c43e639f688,
-      type: 3}
-    plasmoidParameters:
-      <Speed>k__BackingField: 10
-      <ExplosionRadius>k__BackingField: 3
-      <ExplosionDamage>k__BackingField: 100
-      <PlasmaCloudRadius>k__BackingField: 3
-      <PlasmaCloudDPS>k__BackingField: 25
-      <PlasmaCloudDecayTime>k__BackingField: 5
-      <AffectedLayers>k__BackingField:
-        serializedVersion: 2
-        m_Bits: 4294967295
-    audioSource: {fileID: 0}
-    firingSound: {fileID: 0}
+  inactiveColor: {r: 1, g: 1, b: 1, a: 0.09803922}
+  activeColor: {r: 1, g: 0.8, b: 0, a: 0.09803922}
+  combatColor: {r: 1, g: 0, b: 0, a: 0.09803922}
+  PTparameters: {fileID: 11400000, guid: 2075aef3bd23b494aac12214546cdf72, type: 2}
+  plasmaGunComponents:
+    <Muzzle>k__BackingField: {fileID: 2241034608169395954}
+    <AudioSource>k__BackingField: {fileID: -8159128879128124052}
+    <FiringSound>k__BackingField: {fileID: 0}
+--- !u!1 &7392107533993659808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577060034084714217}
+  m_Layer: 0
+  m_Name: Detection Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1577060034084714217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392107533993659808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4536218204082634475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2628070916580795955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,7 +413,7 @@ PrefabInstance:
     - target: {fileID: 9158784707283360792, guid: d9b32ea005faaec4a8246e12a7d193de,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9158784707283360792, guid: d9b32ea005faaec4a8246e12a7d193de,
         type: 3}

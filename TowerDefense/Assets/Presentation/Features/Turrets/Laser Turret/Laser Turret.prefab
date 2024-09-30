@@ -33,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 292176106572760548}
   - {fileID: 356020128667605544}
+  - {fileID: 7118767646752417932}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &711201597770100215
@@ -143,32 +144,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e5728c41cc7804d969ce5bdc208d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TargetDetection>k__BackingField:
-    <SensorOffset>k__BackingField: {x: 0, y: 1, z: 0}
-    <DetectionRadius>k__BackingField: 10
-  <TargetTracking>k__BackingField:
-    muzzle: {fileID: 3536985359900069994}
-    horizontalHinge: {fileID: 3386186456874914215}
-    minHorizontalAngle: 0
-    maxHorizontalAngle: 360
-    horizontalTurningSpeed: 180
-    verticalHinge: {fileID: 3667449257179832528}
-    minVerticalAngle: -20
-    maxVerticalAngle: 20
-    verticalTurningSpeed: 180
+  parameters: {fileID: 11400000, guid: c047fbb982de9d641a492ba5768a3583, type: 2}
+  detectionSensor: {fileID: 7118767646752417932}
+  trackingTransforms:
+    <Muzzle>k__BackingField: {fileID: 3536985359900069994}
+    <HorizontalHinge>k__BackingField: {fileID: 3386186456874914215}
+    <VerticalHinge>k__BackingField: {fileID: 3667449257179832528}
   IsActivated: 1
   showGizmos: 1
-  inactiveColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-  activeColor: {r: 1, g: 0.8, b: 0, a: 0.39215687}
-  combatColor: {r: 1, g: 0, b: 0, a: 0.39215687}
-  <LaserGun>k__BackingField:
-    rechargingTime: 5
-    muzzle: {fileID: 3536985359900069994}
-    damagePerSecond: 10
-    maxEmittingTime: 5
-    audioSource: {fileID: 711201597770100215}
-    firingSound: {fileID: 8300000, guid: 001636569b9b2004f93b331e46dd10cd, type: 3}
-    beamEffect: {fileID: 214426667872594110}
+  inactiveColor: {r: 1, g: 1, b: 1, a: 0.09803922}
+  activeColor: {r: 1, g: 0.8, b: 0, a: 0.09803922}
+  combatColor: {r: 1, g: 0, b: 0, a: 0.09803922}
+  LTparameters: {fileID: 11400000, guid: c047fbb982de9d641a492ba5768a3583, type: 2}
+  laserGunComponents:
+    <Muzzle>k__BackingField: {fileID: 3536985359900069994}
+    <AudioSource>k__BackingField: {fileID: 711201597770100215}
+    <FiringSound>k__BackingField: {fileID: 8300000, guid: 001636569b9b2004f93b331e46dd10cd,
+      type: 3}
+    <BeamEffect>k__BackingField: {fileID: 214426667872594110}
+--- !u!1 &1034889093046380834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7118767646752417932}
+  m_Layer: 0
+  m_Name: Detection Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7118767646752417932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034889093046380834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4799288110355736938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5173814805082272124
 GameObject:
   m_ObjectHideFlags: 0

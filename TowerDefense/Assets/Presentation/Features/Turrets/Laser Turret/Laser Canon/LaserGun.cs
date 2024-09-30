@@ -1,19 +1,18 @@
 using System;
 using UnityEngine;
 
-[Serializable]
 public class LaserGun : Weapon
 {
-    [SerializeField] public Transform muzzle;
+    private LaserGunComponents _components;
+    private LaserGunParameters _parameters;
 
-    [Header("Beam")]
-    [SerializeField] public int damagePerSecond;
-    [SerializeField] private float maxEmittingTime;
+    public LaserGun(LaserGunComponents components, LaserGunParameters parameters) : base(parameters)
+    {
+        _components = components;
+        _parameters = parameters;
+    }
 
-    [Header("Effects")]
-    [SerializeField] public AudioSource audioSource;
-    [SerializeField] public AudioClip firingSound;
-    [SerializeField] public LineRenderer beamEffect;
+    public Transform Muzzle { get { return _components.Muzzle; } }
 
     private bool _isEmitting;
     private float _emittingTimer;
@@ -38,9 +37,9 @@ public class LaserGun : Weapon
 
         _isEmitting = true;
 
-        beamEffect.enabled = true;
-        audioSource.clip = firingSound;
-        audioSource.Play();
+        _components.BeamEffect.enabled = true;
+        _components.AudioSource.clip = _components.FiringSound;
+        _components.AudioSource.Play();
     }
 
     public void CeaseFire()
@@ -52,20 +51,20 @@ public class LaserGun : Weapon
         _emittingTimer = 0;
         _needsRecharging = true;
 
-        beamEffect.enabled = false;
-        audioSource.Stop();
+        _components.BeamEffect.enabled = false;
+        _components.AudioSource.Stop();
     }
     #endregion
 
     #region Beam
     private void EmitBeam()
     {
-        Ray beamRay = new Ray(muzzle.position, muzzle.forward);
+        Ray beamRay = new Ray(_components.Muzzle.position, _components.Muzzle.forward);
         Vector3 impactPoint = FireRaycast(beamRay);
         DrawBeam(impactPoint);
 
         _emittingTimer += Time.deltaTime;
-        if (_emittingTimer > maxEmittingTime)
+        if (_emittingTimer > _parameters.MaxEmittingTime)
         {
             CeaseFire();
         }
@@ -77,7 +76,7 @@ public class LaserGun : Weapon
         {
             if (hit.collider.TryGetComponent(out DroneHealth health))
             {
-                _accumulatedDamage += damagePerSecond * Time.deltaTime;
+                _accumulatedDamage += _parameters.DamagePerSecond * Time.deltaTime;
 
                 if (_accumulatedDamage >= 1)
                 {
@@ -96,7 +95,27 @@ public class LaserGun : Weapon
 
     private void DrawBeam(Vector3 impactPoint)
     {
-        beamEffect.SetPosition(1, beamEffect.transform.InverseTransformPoint(impactPoint));
+        _components.BeamEffect.SetPosition(1, _components.BeamEffect.transform.InverseTransformPoint(impactPoint));
     }
     #endregion
+
+    [Serializable]
+    public class LaserGunComponents
+    {
+        [field: Header("Gun Parametres")]
+        [field: SerializeField] public Transform Muzzle { get; private set; }
+
+        [field: Header("Effects")]
+        [field: SerializeField] public AudioSource AudioSource { get; private set; }
+        [field: SerializeField] public AudioClip FiringSound { get; private set; }
+        [field: SerializeField] public LineRenderer BeamEffect { get; private set; }
+    }
+
+    [Serializable]
+    public class LaserGunParameters : WeaponParameters
+    {
+        [field: Header("Beam")]
+        [field: SerializeField] public int DamagePerSecond { get; private set; }
+        [field: SerializeField] public float MaxEmittingTime { get; private set; }
+    }
 }

@@ -1,29 +1,47 @@
 using System;
 using UnityEngine;
 
-[Serializable]
 public class PlasmaGun : Weapon
 {
-    [Header("Gun Parametres")]
-    [SerializeField] public Transform muzzle;
+    private PlasmaGunComponents _components;
+    private PlasmaGunParameters _parameters;
 
-    [Header("Plasmoid")]
-    [SerializeField] private Plasmoid plasmoidPrefab;
-    [SerializeField] private Plasmoid.PlasmoidParameters plasmoidParameters;
+    public PlasmaGun(PlasmaGunComponents components, PlasmaGunParameters parameters) : base(parameters)
+    {
+        _components = components;
+        _parameters = parameters;
+    }
 
-    [Header("Effects")]
-    [SerializeField] public AudioSource audioSource;
-    [SerializeField] public AudioClip firingSound;
+    public Transform Muzzle { get { return _components.Muzzle; } }
 
     public void LaunchPlasmoid(Vector3 point)
     {
         if (!ReadyToFire)
             return;
 
-        Plasmoid plasmoid = UnityEngine.Object.Instantiate(plasmoidPrefab, muzzle.position, muzzle.rotation);
-        float plasmoidExplosionTime = (point - muzzle.position).magnitude / plasmoidParameters.Speed;
-        plasmoid.SetParameters(plasmoidParameters, plasmoidExplosionTime);
+        Plasmoid plasmoid = UnityEngine.Object.Instantiate(_parameters.PlasmoidPrefab, _components.Muzzle.position, _components.Muzzle.rotation);
+        float plasmoidExplosionTime = (point - _components.Muzzle.position).magnitude / _parameters.PlasmoidParameters.Speed;
+        plasmoid.SetParameters(_parameters.PlasmoidParameters, plasmoidExplosionTime);
 
         _needsRecharging = true;
+    }
+
+    [Serializable]
+    public class PlasmaGunComponents
+    {
+        [field: Header("Gun Parametres")]
+        [field: SerializeField] public Transform Muzzle { get; private set; }
+
+        [field: Header("Effects")]
+        [field: SerializeField] public AudioSource AudioSource { get; private set; }
+        [field: SerializeField] public AudioClip FiringSound { get; private set; }
+    }
+
+    [Serializable]
+    public class PlasmaGunParameters : WeaponParameters
+    {
+        [field: Header("Plasmoid")]
+        [field: SerializeField] public Plasmoid PlasmoidPrefab { get; private set; }
+        [field: SerializeField] public Plasmoid.PlasmoidParameters PlasmoidParameters { get; private set; }
     }
 }

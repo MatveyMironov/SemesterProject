@@ -39,7 +39,7 @@ public class PT_Fighting_State : IState
 
     private bool CheckAim(PlasmaGun plasmaGun, TargetDetection detection)
     {
-        if (Physics.Raycast(plasmaGun.muzzle.position, plasmaGun.muzzle.forward, out RaycastHit hit))
+        if (Physics.Raycast(plasmaGun.Muzzle.position, plasmaGun.Muzzle.forward, out RaycastHit hit))
         {
             if (hit.collider.TryGetComponent(out Drone unit))
             {

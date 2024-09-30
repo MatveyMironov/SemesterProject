@@ -12,7 +12,7 @@ public class PT_Activated_State : IState
 
         AwaitingOrders_State awaitingOrders = new AwaitingOrders_State();
         SelectingTarget_State selectingTarget = new SelectingTarget_State(_turret.TargetDetection);
-        PT_Fighting_State fighting = new PT_Fighting_State(_turret.TargetDetection, _turret.TargetTracking, _turret.PlasmaGun);
+        PT_Fighting_State fighting = new PT_Fighting_State(_turret.TargetDetection, _turret.TargetTracking, _turret._plasmaGun);
 
         _stateMachine.AddTransition(awaitingOrders, selectingTarget, () => _turret.TargetDetection.AvailableTargets.Count > 0);
         _stateMachine.AddTransition(selectingTarget, fighting, () => _turret.TargetDetection.SelectedTarget != null);
@@ -33,7 +33,7 @@ public class PT_Activated_State : IState
 
     public void Tick()
     {
-        _turret.TargetDetection.UseSensor(_turret.transform);
+        _turret.TargetDetection.UseSensor();
 
         _stateMachine.Tick();
     }

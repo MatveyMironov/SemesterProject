@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class LaserTurret : Turret
 {
-    [field: Space]
-    [field: SerializeField] public LaserGun LaserGun { get; private set; } = new();
+    [Space]
+    [SerializeField] private LT_ParametersSO LTparameters;
+    [Space]
+    [SerializeField] private LaserGun.LaserGunComponents laserGunComponents;
+
+    public LaserGun _laserGun { get; private set; }
 
     private StateMachine _stateMachine;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        _laserGun = new(laserGunComponents, LTparameters.LaserGunParameters);
+
         _stateMachine = new StateMachine();
 
         Deactivated_State deactivated = new();
@@ -23,7 +30,7 @@ public class LaserTurret : Turret
 
     private void Update()
     {
-        LaserGun.FunctioningTick();
+        _laserGun.FunctioningTick();
 
         _stateMachine.Tick();
     }

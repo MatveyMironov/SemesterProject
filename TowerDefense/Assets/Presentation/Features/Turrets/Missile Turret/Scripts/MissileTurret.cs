@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class MissileTurret : Turret
 {
-    [field: Space]
-    [field: SerializeField] public MissileLauncher MissileLauncher { get; private set; } = new();
+    [Space]
+    [SerializeField] private MT_ParametersSO MTparameters;
+    [Space]
+    [SerializeField] private MissileLauncher.MissileLauncherComponents missileLauncherComponents;
+
+    public MissileLauncher _missileLauncher { get; private set; }
 
     private StateMachine _stateMachine;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        _missileLauncher = new(missileLauncherComponents, MTparameters.MissileLauncherParameters);
+
         _stateMachine = new();
 
         Deactivated_State deactivated = new();

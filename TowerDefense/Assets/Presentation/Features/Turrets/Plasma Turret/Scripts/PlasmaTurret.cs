@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class PlasmaTurret : Turret
 {
-    [field: Space]
-    [field: SerializeField] public PlasmaGun PlasmaGun { get; private set; } = new();
+    [Space]
+    [SerializeField] private PT_ParametersSO PTparameters;
+    [Space]
+    [SerializeField] private PlasmaGun.PlasmaGunComponents plasmaGunComponents;
+
+    public PlasmaGun _plasmaGun { get; private set; }
 
     private StateMachine _stateMachine;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        _plasmaGun = new(plasmaGunComponents, PTparameters.PlasmaGunParameters);
+
         _stateMachine = new();
 
         Deactivated_State deactivated = new();
@@ -23,7 +30,7 @@ public class PlasmaTurret : Turret
 
     private void Update()
     {
-        PlasmaGun.FunctioningTick();
+        _plasmaGun.FunctioningTick();
 
         _stateMachine.Tick();
     }
