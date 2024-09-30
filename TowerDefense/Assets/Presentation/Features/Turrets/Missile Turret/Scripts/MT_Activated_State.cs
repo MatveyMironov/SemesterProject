@@ -8,11 +8,11 @@ public class MT_Activated_State : IState
     {
         _turret = turret;
 
-        _stateMachine = new StateMachine();
+        _stateMachine = new();
 
-        AwaitingOrders_State awaitingOrders = new AwaitingOrders_State();
-        SelectingTarget_State selectingTarget = new SelectingTarget_State(_turret.TargetDetection);
-        MT_Fighting_State fihting = new MT_Fighting_State(_turret.TargetDetection, _turret.TargetTracking, _turret.MissileLauncher);
+        AwaitingOrders_State awaitingOrders = new();
+        SelectingTarget_State selectingTarget = new(_turret.TargetDetection);
+        MT_Fighting_State fihting = new(_turret.TargetDetection, _turret.TargetTracking, _turret.MissileLauncher);
 
         _stateMachine.AddTransition(awaitingOrders, selectingTarget, () => _turret.TargetDetection.AvailableTargets.Count > 0);
         _stateMachine.AddTransition(selectingTarget, fihting, () => _turret.TargetDetection.SelectedTarget != null);

@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class MissileTurret : Turret
 {
-    [field: SerializeField] public MissileLauncher MissileLauncher { get; private set; } = new MissileLauncher();
+    [field: SerializeField] public MissileLauncher MissileLauncher { get; private set; } = new();
 
     private StateMachine _stateMachine;
 
     private void Awake()
     {
-        _stateMachine = new StateMachine();
+        _stateMachine = new();
 
-        DeactivatedState deactivatedState = new DeactivatedState();
-        MT_Activated_State activatedState = new MT_Activated_State(this);
+        Deactivated_State deactivated = new();
+        MT_Activated_State activated = new(this);
 
-        _stateMachine.AddTransition(deactivatedState, activatedState, () => IsActivated);
-        _stateMachine.AddTransition(activatedState, deactivatedState, () => !IsActivated);
+        _stateMachine.AddTransition(deactivated, activated, () => IsActivated);
+        _stateMachine.AddTransition(activated, deactivated, () => !IsActivated);
 
-        _stateMachine.SetState(deactivatedState);
+        _stateMachine.SetState(deactivated);
         _stateMachine.EnterCurrentState();
     }
 

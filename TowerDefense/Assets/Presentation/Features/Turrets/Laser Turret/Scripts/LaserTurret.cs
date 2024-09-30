@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LaserTurret : Turret
 {
-    [field: SerializeField] public LaserGun LaserGun { get; private set; } = new LaserGun();
+    [field: SerializeField] public LaserGun LaserGun { get; private set; } = new();
 
     private StateMachine _stateMachine;
 
@@ -10,13 +10,13 @@ public class LaserTurret : Turret
     {
         _stateMachine = new StateMachine();
 
-        DeactivatedState deactivatedState = new DeactivatedState();
-        LaserTurretActivatedState activatedState = new LaserTurretActivatedState(this);
+        Deactivated_State deactivated = new();
+        LT_Activated_State activated = new(this);
 
-        _stateMachine.AddTransition(deactivatedState, activatedState, () => IsActivated);
-        _stateMachine.AddTransition(activatedState, deactivatedState, () => !IsActivated);
+        _stateMachine.AddTransition(deactivated, activated, () => IsActivated);
+        _stateMachine.AddTransition(activated, deactivated, () => !IsActivated);
 
-        _stateMachine.SetState(deactivatedState);
+        _stateMachine.SetState(deactivated);
         _stateMachine.EnterCurrentState();
     }
 

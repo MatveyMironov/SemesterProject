@@ -3,19 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class MissilePod
-{
-    [field: SerializeField] public Transform MissileSpawn { get; private set; }
-    [field: Tooltip("Rocket will go to attack position before startint to persue it's target")]
-    [field: SerializeField] public Transform MissileAttackPosition { get; private set; }
-    [field: SerializeField] public ParticleSystem MissileLaunchEffect { get; private set; }
-}
-
-[Serializable]
 public class MissileLauncher
 {
-    [Tooltip("Each pod can launch one missile, than it has to be recharged")]
-    [SerializeField] private List<MissilePod> missilePods = new List<MissilePod>();
+    [Tooltip("Pods launch missiles in a cycle one after another")]
+    [SerializeField] private List<MissilePod> missilePods = new();
 
     [Header("Launcher")]
     [Tooltip("Time between two individual missiles can be launched")]
@@ -23,7 +14,7 @@ public class MissileLauncher
 
     [Header("Missile")]
     [SerializeField] private Missile missilePrefab;
-    [SerializeField] private MissileCharacteristics missileCharateristics;
+    [SerializeField] private Missile.MissileParameters missileParameters;
 
     [Header("Effects")]
     [SerializeField] private AudioSource audioSource;
@@ -56,9 +47,9 @@ public class MissileLauncher
         PlayLaunchEffects();
 
         Missile missile = UnityEngine.Object.Instantiate(missilePrefab, missilePod.MissileSpawn.position, missilePod.MissileSpawn.rotation);
-        missile.MissileCharacteristics = missileCharateristics;
-        MissileProgram program = new MissileProgram(missilePod.MissileAttackPosition.position, target);
-        missile.ProgramMissile(program);
+        Missile.MissileProgram program = new(missilePod.MissileAttackPosition.position, target);
+        missile.SetParameters(missileParameters);
+        missile.Program(program);
 
         _isOnCooldown = true;
 
@@ -95,5 +86,14 @@ public class MissileLauncher
     private bool CheckIfReadyToLaunch()
     {
         return !(_isOnCooldown);
+    }
+
+    [Serializable]
+    private class MissilePod
+    {
+        [field: SerializeField] public Transform MissileSpawn { get; private set; }
+        [field: Tooltip("Rocket will go to attack position before starting to persue it's target")]
+        [field: SerializeField] public Transform MissileAttackPosition { get; private set; }
+        [field: SerializeField] public ParticleSystem MissileLaunchEffect { get; private set; }
     }
 }

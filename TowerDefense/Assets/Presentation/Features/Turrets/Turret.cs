@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public abstract class Turret : MonoBehaviour
 {
     [field: Space]
-    [field: SerializeField] public TargetDetection TargetDetection { get; private set; } = new TargetDetection();
-    [field: SerializeField] public TargetTracking TargetTracking { get; private set; } = new TargetTracking();
+    [field: SerializeField] public TargetDetection TargetDetection { get; private set; } = new();
+    [field: SerializeField] public TargetTracking TargetTracking { get; private set; } = new();
 
     public bool IsActivated;
 

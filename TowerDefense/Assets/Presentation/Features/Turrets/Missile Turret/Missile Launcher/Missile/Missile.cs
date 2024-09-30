@@ -1,67 +1,45 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public struct MissileCharacteristics
-{
-    [field: Header("Combat Characteristics")]
-    [field: SerializeField] public float MovementSpeed { get; private set; }
-    [field: Tooltip("Degrees per second")]
-    [field: SerializeField] public int AngularSpeed { get; private set; }
-    [field: SerializeField] public int Damage { get; private set; }
-
-    [field: Header("Effects")]
-    [field: SerializeField] public AudioClip FlightSound { get; private set; }
-    [field: SerializeField] public GameObject ExplosionPrefab { get; private set; }
-}
-
-[Serializable]
-public struct MissileProgram
-{
-    public MissileProgram(Vector3 attackPosition, Transform target)
-    {
-        AttackPosition = attackPosition;
-        Target = target;
-    }
-
-    [field: Header("Combat Objectives")]
-    [field: SerializeField] public Vector3 AttackPosition { get; private set; }
-    [field: SerializeField] public Transform Target { get; private set; }
-}
-
 public class Missile : MonoBehaviour
 {
-    [field: SerializeField] public MissileCharacteristics MissileCharacteristics { get; set; }
-    [field: SerializeField] public MissileProgram MissileProgram { get; private set; }
+    private MissileParameters _parameters;
+    private MissileProgram _program;
 
-    [Space]
-    [SerializeField] private bool isActive;
+    private bool _hasParameters = false;
+    private bool _isActive = false;
 
     private bool _hasReachedAttackPosition;
     private float _lifeTimer = 0f;
     private float _forcedDetonationTime = 10.0f;
 
-    public void ProgramMissile(MissileProgram program)
+    public void SetParameters(MissileParameters parameters)
     {
-        MissileProgram = program;
-        isActive = true;
+        _parameters = parameters;
+        _hasParameters = true;
+    }
+
+    public void Program(MissileProgram program)
+    {
+        _program = program;
+        _isActive = true;
     }
     
     private void Update()
     {
-        if (!isActive)
+        if (!_isActive || !_hasParameters)
             return;
 
         if (!_hasReachedAttackPosition)
         {
-            MoveToPosition(MissileProgram.AttackPosition);
-            _hasReachedAttackPosition = transform.position == MissileProgram.AttackPosition;
+            MoveToPosition(_program.AttackPosition);
+            _hasReachedAttackPosition = transform.position == _program.AttackPosition;
             return;
         }
 
-        if (MissileProgram.Target != null)
+        if (_program.Target != null)
         {
-            MoveToPosition(MissileProgram.Target.position);
+            MoveToPosition(_program.Target.position);
             CountLifeTime();
         }
         else
@@ -77,22 +55,22 @@ public class Missile : MonoBehaviour
 
         if (transform.rotation != lookRotation)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, MissileCharacteristics.AngularSpeed * Time.deltaTime);
-            transform.position += transform.forward * MissileCharacteristics.MovementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, _parameters.AngularSpeed * Time.deltaTime);
+            transform.position += transform.forward * _parameters.MovementSpeed * Time.deltaTime;
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, destination, MissileCharacteristics.MovementSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destination, _parameters.MovementSpeed * Time.deltaTime);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isActive)
+        if (_isActive && _hasParameters)
         {
             if (collision.transform.TryGetComponent(out DroneHealth health))
             {
-                health.SubtractHealth(MissileCharacteristics.Damage);
+                health.SubtractHealth(_parameters.Damage);
             }
 
             Detonate();
@@ -101,7 +79,7 @@ public class Missile : MonoBehaviour
 
     private void Detonate()
     {
-        Instantiate(MissileCharacteristics.ExplosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(_parameters.ExplosionPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
@@ -115,4 +93,33 @@ public class Missile : MonoBehaviour
             Detonate();
         }
     }
+
+    [Serializable]
+    public struct MissileParameters
+    {
+        [field: Header("Combat Characteristics")]
+        [field: SerializeField] public float MovementSpeed { get; private set; }
+        [field: Tooltip("Degrees per second")]
+        [field: SerializeField] public int AngularSpeed { get; private set; }
+        [field: SerializeField] public int Damage { get; private set; }
+
+        [field: Header("Effects")]
+        [field: SerializeField] public AudioClip FlightSound { get; private set; }
+        [field: SerializeField] public GameObject ExplosionPrefab { get; private set; }
+    }
+
+    [Serializable]
+    public struct MissileProgram
+    {
+        public MissileProgram(Vector3 attackPosition, Transform target)
+        {
+            AttackPosition = attackPosition;
+            Target = target;
+        }
+
+        [field: Header("Combat Objectives")]
+        [field: SerializeField] public Vector3 AttackPosition { get; private set; }
+        [field: SerializeField] public Transform Target { get; private set; }
+    }
+
 }

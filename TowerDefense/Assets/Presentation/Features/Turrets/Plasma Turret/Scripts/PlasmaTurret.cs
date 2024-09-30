@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class PlasmaTurret : Turret
 {
-    [field: SerializeField] public PlasmaGun PlasmaGun { get; private set; } = new PlasmaGun();
+    [field: SerializeField] public PlasmaGun PlasmaGun { get; private set; } = new();
 
     private StateMachine _stateMachine;
 
     private void Awake()
     {
-        _stateMachine = new StateMachine();
+        _stateMachine = new();
 
-        DeactivatedState deactivatedState = new DeactivatedState();
-        PT_Activated_State activatedState = new PT_Activated_State(this);
+        Deactivated_State deactivated = new();
+        PT_Activated_State activated = new(this);
 
-        _stateMachine.AddTransition(deactivatedState, activatedState, () => IsActivated);
-        _stateMachine.AddTransition(activatedState, deactivatedState, () => !IsActivated);
+        _stateMachine.AddTransition(deactivated, activated, () => IsActivated);
+        _stateMachine.AddTransition(activated, deactivated, () => !IsActivated);
 
-        _stateMachine.SetState(deactivatedState);
+        _stateMachine.SetState(deactivated);
         _stateMachine.EnterCurrentState();
     }
 

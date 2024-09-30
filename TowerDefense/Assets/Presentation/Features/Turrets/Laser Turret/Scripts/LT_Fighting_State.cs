@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class PT_Fighting_State : IState
+public class LT_Fighting_State : IState
 {
     private TargetDetection _detection;
     private TargetTracking _tracking;
-    private PlasmaGun _plasmaGun;
+    private LaserGun _laserGun;
 
-    public PT_Fighting_State(TargetDetection targetDetection, TargetTracking targetTracking, PlasmaGun plasmaGun)
+    public LT_Fighting_State(TargetDetection detection, TargetTracking tracking, LaserGun laserGun)
     {
-        _detection = targetDetection;
-        _tracking = targetTracking;
-        _plasmaGun = plasmaGun;
+        _detection = detection;
+        _tracking = tracking;
+        _laserGun = laserGun;
     }
 
     public void OnEnter()
@@ -20,15 +20,19 @@ public class PT_Fighting_State : IState
 
     public void OnExit()
     {
-        
+        _laserGun.CeaseFire();
     }
 
     public void Tick()
     {
         TrackTarget(_tracking, _detection.SelectedTarget);
-        if (CheckAim(_plasmaGun, _detection))
+        if (CheckAim(_laserGun, _detection))
         {
-            _plasmaGun.LaunchPlasmoid(_detection.SelectedTarget.transform.position);
+            _laserGun.OpenFire();
+        }
+        else
+        {
+            _laserGun.CeaseFire();
         }
     }
 
@@ -37,9 +41,9 @@ public class PT_Fighting_State : IState
         tracking.TrackTarget(target.transform);
     }
 
-    private bool CheckAim(PlasmaGun plasmaGun, TargetDetection detection)
+    private bool CheckAim(LaserGun laserGun, TargetDetection detection)
     {
-        if (Physics.Raycast(plasmaGun.muzzle.position, plasmaGun.muzzle.forward, out RaycastHit hit))
+        if (Physics.Raycast(laserGun.muzzle.position, laserGun.muzzle.forward, out RaycastHit hit))
         {
             if (hit.collider.TryGetComponent(out Drone unit))
             {

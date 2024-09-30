@@ -1,21 +1,17 @@
-using UnityEngine;
-
 public class SelectingTarget_State : IState
 {
-    private TargetDetection _detectionSystem;
+    private TargetDetection _detection;
 
-    public SelectingTarget_State(TargetDetection detectionSystem)
+    public SelectingTarget_State(TargetDetection detection)
     {
-        _detectionSystem = detectionSystem;
+        _detection = detection;
     }
 
     public void OnEnter()
     {
-        Debug.Log("Selecting target");
-
-        if (_detectionSystem.AvailableTargets.Count > 0)
+        if (_detection.AvailableTargets.Count > 0)
         {
-            _detectionSystem.SelectedTarget = _detectionSystem.AvailableTargets[0];
+            _detection.SelectedTarget = _detection.AvailableTargets[0];
         }
     }
 

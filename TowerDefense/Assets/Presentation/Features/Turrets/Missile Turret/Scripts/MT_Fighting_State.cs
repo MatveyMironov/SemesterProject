@@ -1,21 +1,19 @@
-using UnityEngine;
-
 public class MT_Fighting_State : IState
 {
-    private TargetDetection _detectionSystem;
-    private TargetTracking _targetTracking;
+    private TargetDetection _detection;
+    private TargetTracking _tracking;
     private MissileLauncher _missileLauncher;
 
-    public MT_Fighting_State(TargetDetection detetctionsystem, TargetTracking targetTracking, MissileLauncher missileLauncher)
+    public MT_Fighting_State(TargetDetection detection, TargetTracking tracking, MissileLauncher missileLauncher)
     {
-        _detectionSystem = detetctionsystem;
-        _targetTracking = targetTracking;
+        _detection = detection;
+        _tracking = tracking;
         _missileLauncher = missileLauncher;
     }
 
     public void OnEnter()
     {
-        Debug.Log("Eliminate target");
+        
     }
 
     public void OnExit()
@@ -25,13 +23,13 @@ public class MT_Fighting_State : IState
 
     public void Tick()
     {
-        _targetTracking.TrackTarget(_detectionSystem.SelectedTarget.transform);
+        _tracking.TrackTarget(_detection.SelectedTarget.transform);
 
         _missileLauncher.FunctioningTick();
 
         if (_missileLauncher.ReadyToLaunch)
         {
-            _missileLauncher.LaunchMissile(_detectionSystem.SelectedTarget.transform);
+            _missileLauncher.LaunchMissile(_detection.SelectedTarget.transform);
         }
     }
 }

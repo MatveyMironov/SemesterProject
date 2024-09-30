@@ -1,15 +1,13 @@
-using UnityEngine;
-
-public class DeactivatedState : IState
+public class Deactivated_State : IState
 {
-    public DeactivatedState()
+    public Deactivated_State()
     {
         
     }
 
     public void OnEnter()
     {
-        Debug.Log("Sleeping mode...");
+        
     }
 
     public void OnExit()

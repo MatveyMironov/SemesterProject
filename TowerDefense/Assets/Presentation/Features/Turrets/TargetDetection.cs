@@ -5,11 +5,11 @@ using UnityEngine;
 [Serializable]
 public class TargetDetection
 {
-    [field: Tooltip("If you want the sensor to be not in the center of the object")]
+    [field: Tooltip("If you want the sensor to be not in the origin of the object")]
     [field: SerializeField] public Vector3 SensorOffset { get; private set; }
     [field: SerializeField] public float DetectionRadius { get; private set; }
 
-    public List<Drone> AvailableTargets { get; private set; } = new List<Drone>();
+    public List<Drone> AvailableTargets { get; private set; } = new();
     public Drone SelectedTarget { get; set; }
 
     public void UseSensor(Transform sensor)

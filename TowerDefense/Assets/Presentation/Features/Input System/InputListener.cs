@@ -24,7 +24,6 @@ public class InputListener : MonoBehaviour
 
     private void OnToggleConstruction(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("toggle construction");
         construction.ToggleConstructionMode();
     }
 

@@ -10,12 +10,12 @@ public class TargetTracking
     [SerializeField] private Transform horizontalHinge;
     [SerializeField] private float minHorizontalAngle;
     [SerializeField] private float maxHorizontalAngle;
-    [SerializeField] private float horizontalRotationSpeed;
+    [SerializeField] private float horizontalTurningSpeed;
     [Tooltip("The part that rotates in vertical plane")]
     [SerializeField] private Transform verticalHinge;
     [SerializeField] private float minVerticalAngle;
     [SerializeField] private float maxVerticalAngle;
-    [SerializeField] private float verticalRotationSpeed;
+    [SerializeField] private float verticalTurningSpeed;
 
     public void TrackTarget(Transform target)
     {
@@ -33,11 +33,11 @@ public class TargetTracking
         {
             if (horizontalHinge != null)
             {
-                horizontalHinge.localRotation = Quaternion.RotateTowards(horizontalHinge.localRotation, horizontalRotation, horizontalRotationSpeed * Time.deltaTime);
+                horizontalHinge.localRotation = Quaternion.RotateTowards(horizontalHinge.localRotation, horizontalRotation, horizontalTurningSpeed * Time.deltaTime);
             }
             if (verticalHinge != null)
             {
-                verticalHinge.localRotation = Quaternion.RotateTowards(verticalHinge.localRotation, verticalRotation, verticalRotationSpeed * Time.deltaTime);
+                verticalHinge.localRotation = Quaternion.RotateTowards(verticalHinge.localRotation, verticalRotation, verticalTurningSpeed * Time.deltaTime);
             }
         }
     }

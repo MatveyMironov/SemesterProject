@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class AwaitingOrders_State : IState
 {
     public AwaitingOrders_State()
@@ -9,7 +7,7 @@ public class AwaitingOrders_State : IState
 
     public void OnEnter()
     {
-        Debug.Log("Awaiting orders...");
+        
     }
 
     public void OnExit()

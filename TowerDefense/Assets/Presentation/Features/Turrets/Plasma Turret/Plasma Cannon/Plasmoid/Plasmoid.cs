@@ -22,6 +22,9 @@ public class Plasmoid : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!_hasParameters)
+            return;
+
         Explode();
     }
 
