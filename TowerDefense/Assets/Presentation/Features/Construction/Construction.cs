@@ -3,7 +3,6 @@ using UnityEngine;
 public class Construction : MonoBehaviour
 {
     [SerializeField] private ConstructionSite[] constructionSites = new ConstructionSite[0];
-    private ConstructionSite _selectedSite;
 
     [Header("Turrets")]
     [SerializeField] private Turret laserTurretPrefab;
@@ -19,7 +18,9 @@ public class Construction : MonoBehaviour
 
     private bool _isConstructionModeEntered;
 
-    private void Awake()
+    private Turret _selectedTurretPrefab;
+
+    private void Start()
     {
         ExitConstructionMode();
     }
@@ -68,9 +69,10 @@ public class Construction : MonoBehaviour
     }
     #endregion
 
+    #region Building
     public void SelectConstructionSite()
     {
-        if (!_isConstructionModeEntered)
+        if (_selectedTurretPrefab == null)
             return;
 
         Vector3 mousePosition = Input.mousePosition;
@@ -83,19 +85,10 @@ public class Construction : MonoBehaviour
             {
                 if (!constructionSite.IsOccupied)
                 {
-                    StartBuilding(constructionSite);
+                    BuildTurret(constructionSite, _selectedTurretPrefab);
                 }
             }
         }
-    }
-
-    #region Building
-    private void StartBuilding(ConstructionSite constructionSite)
-    {
-        if (constructionSite == null)
-            return;
-
-        _selectedSite = constructionSite;
     }
 
     private void BuildTurret(ConstructionSite constructionSite, Turret turretPrefab)
@@ -103,12 +96,13 @@ public class Construction : MonoBehaviour
         if (!constructionSite.IsOccupied)
         {
             constructionSite.Build(turretPrefab);
+            AbortBuilding();
         }
     }
 
     private void AbortBuilding()
     {
-        _selectedSite = null;
+        _selectedTurretPrefab = null;
     }
     #endregion
 
@@ -128,16 +122,16 @@ public class Construction : MonoBehaviour
 
     private void BuildLaserTurret()
     {
-        BuildTurret(_selectedSite, laserTurretPrefab);
+        _selectedTurretPrefab = laserTurretPrefab;
     }
 
     private void BuildMissileTurret()
     {
-        BuildTurret(_selectedSite, missileTurretPrefab);
+        _selectedTurretPrefab = missileTurretPrefab;
     }
 
     private void BuildPlasmaTurret()
     {
-        BuildTurret(_selectedSite, plasmaTurretPrefab);
+        _selectedTurretPrefab = plasmaTurretPrefab;
     }
 }

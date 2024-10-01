@@ -21,8 +21,6 @@ public class ConstructionMenu : MonoBehaviour
     {
         _eventSystem = EventSystem.current;
 
-        CloseMenu();
-
         laserTurretButton.onClick.AddListener(() => OnLaserTurretClicked?.Invoke());
         missileTurretButton.onClick.AddListener(() => OnMissileTurretClicked?.Invoke());
         plasmaTurretButton.onClick.AddListener(() => OnPlasmaTurretClicked?.Invoke());
