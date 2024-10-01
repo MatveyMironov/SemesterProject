@@ -10,10 +10,10 @@ public class PreviewSystem
         _previewObject = Object.Instantiate(previewPrefab);
     }
 
-    public void ShowPreview(Vector3 position, Quaternion rotation)
+    public void ShowPreview(ConstructionSite constructionSite)
     {
-        _previewObject.transform.position = position;
-        _previewObject.transform.rotation = rotation;
+        _previewObject.transform.position = constructionSite.transform.position;
+        _previewObject.transform.rotation = constructionSite.transform.rotation;
         _previewObject.SetActive(true);
     }
 

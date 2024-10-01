@@ -18,13 +18,52 @@ public class Construction : MonoBehaviour
 
     private bool _isConstructionModeEntered;
 
-    private Turret _selectedTurretPrefab;
+    private TurretParametersSO _selectedTurret;
+    private Vector3 _previousMousePosition;
+    private ConstructionSite _highlitedSite;
 
     private PreviewSystem _previewSystem = new();
 
     private void Start()
     {
         ExitConstructionMode();
+    }
+
+    private void Update()
+    {
+        if (_selectedTurret != null)
+        {
+            Vector3 mousePosition = Input.mousePosition;
+
+            if (mousePosition != _previousMousePosition)
+            {
+                mousePosition.z = mainCamera.nearClipPlane;
+
+                Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, 1000, constructionLayers))
+                {
+                    if (hit.collider.TryGetComponent(out ConstructionSite constructionSite))
+                    {
+                        if (!constructionSite.IsOccupied)
+                        {
+                            if (constructionSite != _highlitedSite)
+                            {
+                                _previewSystem.ShowPreview(constructionSite);
+                                _highlitedSite = constructionSite;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _previewSystem.HidePreview();
+                    _highlitedSite = null;
+                }
+
+                _previousMousePosition = mousePosition;
+            }
+            
+        }
     }
 
     #region Construction Mode
@@ -72,9 +111,15 @@ public class Construction : MonoBehaviour
     #endregion
 
     #region Building
+    public void SelectTurret(TurretParametersSO turret)
+    {
+        _selectedTurret = turret;
+        _previewSystem.CreatePreview(turret.TurretPreview);
+    }
+
     public void SelectConstructionSite()
     {
-        if (_selectedTurretPrefab == null)
+        if (_selectedTurret == null)
             return;
 
         Vector3 mousePosition = Input.mousePosition;
@@ -87,7 +132,7 @@ public class Construction : MonoBehaviour
             {
                 if (!constructionSite.IsOccupied)
                 {
-                    BuildTurret(constructionSite, _selectedTurretPrefab);
+                    BuildTurret(constructionSite, _selectedTurret.TurretPrefab);
                 }
             }
         }
@@ -104,36 +149,38 @@ public class Construction : MonoBehaviour
 
     private void AbortBuilding()
     {
-        _selectedTurretPrefab = null;
+        _selectedTurret = null;
+        _highlitedSite = null;
+        _previewSystem.DestroyPreview();
     }
     #endregion
 
     private void OnEnable()
     {
-        constructionMenu.OnLaserTurretClicked += BuildLaserTurret;
-        constructionMenu.OnMissileTurretClicked += BuildMissileTurret;
-        constructionMenu.OnPlasmaTurretClicked += BuildPlasmaTurret;
+        constructionMenu.OnLaserTurretClicked += SelectLaserTurret;
+        constructionMenu.OnMissileTurretClicked += SelectMissileTurret;
+        constructionMenu.OnPlasmaTurretClicked += SelectPlasmaTurret;
     }
 
     private void OnDisable()
     {
-        constructionMenu.OnLaserTurretClicked -= BuildLaserTurret;
-        constructionMenu.OnMissileTurretClicked -= BuildMissileTurret;
-        constructionMenu.OnPlasmaTurretClicked -= BuildPlasmaTurret;
+        constructionMenu.OnLaserTurretClicked -= SelectLaserTurret;
+        constructionMenu.OnMissileTurretClicked -= SelectMissileTurret;
+        constructionMenu.OnPlasmaTurretClicked -= SelectPlasmaTurret;
     }
 
-    private void BuildLaserTurret()
+    private void SelectLaserTurret()
     {
-        _selectedTurretPrefab = laserTurret.TurretPrefab;
+        SelectTurret(laserTurret);
     }
 
-    private void BuildMissileTurret()
+    private void SelectMissileTurret()
     {
-        _selectedTurretPrefab = missileTurret.TurretPrefab;
+        SelectTurret(missileTurret);
     }
 
-    private void BuildPlasmaTurret()
+    private void SelectPlasmaTurret()
     {
-        _selectedTurretPrefab = plasmaTurret.TurretPrefab;
+        SelectTurret(plasmaTurret);
     }
 }
