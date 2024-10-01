@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class TurretParametersSO : ScriptableObject
+public abstract class TurretDataSO : ScriptableObject
 {
     [field: SerializeField] public Turret TurretPrefab { get; private set; }
     [field: SerializeField] public GameObject TurretPreview { get; private set; }

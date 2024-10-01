@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -35,5 +36,22 @@ public class ConstructionMenu : MonoBehaviour
     {
         menuWindow.SetActive(false);
         _eventSystem.SetSelectedGameObject(null);
+    }
+
+    [SerializeField] private Button constructionButtonPrefab;
+
+    public void CreateConstructionButtons(List<ConstructionBlueprint> blueprints)
+    {
+        foreach (ConstructionBlueprint blueprint in blueprints)
+        {
+            Button button = Instantiate(constructionButtonPrefab);
+            button.onClick.AddListener(blueprint.SelectBlueprint);
+        }
+    }
+
+    [Serializable]
+    private class ConstructionButton
+    {
+        private Button _button;
     }
 }

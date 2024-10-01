@@ -18,7 +18,7 @@ public class Construction : MonoBehaviour
 
     private bool _isConstructionModeEntered;
 
-    private TurretParametersSO _selectedTurret;
+    private TurretDataSO _selectedTurret;
     private Vector3 _previousMousePosition;
     private ConstructionSite _highlitedSite;
 
@@ -111,7 +111,7 @@ public class Construction : MonoBehaviour
     #endregion
 
     #region Building
-    public void SelectTurret(TurretParametersSO turret)
+    public void SelectTurret(TurretDataSO turret)
     {
         _selectedTurret = turret;
         _previewSystem.CreatePreview(turret.TurretPreview);

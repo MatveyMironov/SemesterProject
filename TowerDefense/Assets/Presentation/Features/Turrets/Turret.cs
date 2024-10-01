@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Turret : MonoBehaviour
 {
-    [SerializeField] protected TurretParametersSO parameters;
+    [SerializeField] protected TurretDataSO parameters;
     [Space]
     [SerializeField] private Transform detectionSensor;
     [Space]
