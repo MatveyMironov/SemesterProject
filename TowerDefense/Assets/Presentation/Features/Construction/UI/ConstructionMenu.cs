@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ConstructionMenu : MonoBehaviour
@@ -14,8 +15,12 @@ public class ConstructionMenu : MonoBehaviour
     public event Action OnMissileTurretClicked;
     public event Action OnPlasmaTurretClicked;
 
+    private EventSystem _eventSystem;
+
     private void Awake()
     {
+        _eventSystem = EventSystem.current;
+
         CloseMenu();
 
         laserTurretButton.onClick.AddListener(() => OnLaserTurretClicked?.Invoke());
@@ -31,5 +36,6 @@ public class ConstructionMenu : MonoBehaviour
     public void CloseMenu()
     {
         menuWindow.SetActive(false);
+        _eventSystem.SetSelectedGameObject(null);
     }
 }
