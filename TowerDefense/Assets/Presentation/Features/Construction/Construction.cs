@@ -5,9 +5,9 @@ public class Construction : MonoBehaviour
     [SerializeField] private ConstructionSite[] constructionSites = new ConstructionSite[0];
 
     [Header("Turrets")]
-    [SerializeField] private Turret laserTurretPrefab;
-    [SerializeField] private Turret missileTurretPrefab;
-    [SerializeField] private Turret plasmaTurretPrefab;
+    [SerializeField] private LT_ParametersSO laserTurret;
+    [SerializeField] private MT_ParametersSO missileTurret;
+    [SerializeField] private PT_ParametersSO plasmaTurret;
 
     [Space]
     [SerializeField] private Camera mainCamera;
@@ -19,6 +19,8 @@ public class Construction : MonoBehaviour
     private bool _isConstructionModeEntered;
 
     private Turret _selectedTurretPrefab;
+
+    private PreviewSystem _previewSystem = new();
 
     private void Start()
     {
@@ -122,16 +124,16 @@ public class Construction : MonoBehaviour
 
     private void BuildLaserTurret()
     {
-        _selectedTurretPrefab = laserTurretPrefab;
+        _selectedTurretPrefab = laserTurret.TurretPrefab;
     }
 
     private void BuildMissileTurret()
     {
-        _selectedTurretPrefab = missileTurretPrefab;
+        _selectedTurretPrefab = missileTurret.TurretPrefab;
     }
 
     private void BuildPlasmaTurret()
     {
-        _selectedTurretPrefab = plasmaTurretPrefab;
+        _selectedTurretPrefab = plasmaTurret.TurretPrefab;
     }
 }

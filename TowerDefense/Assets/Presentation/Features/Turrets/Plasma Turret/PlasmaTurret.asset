@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bed92d5cd0ed9b49a5fe602437c36d8, type: 3}
   m_Name: PlasmaTurret
   m_EditorClassIdentifier: 
+  <TurretPrefab>k__BackingField: {fileID: 2175359623618865679, guid: 56b2cc13d40f88846908831fcadc3bca,
+    type: 3}
+  <TurretPreview>k__BackingField: {fileID: 2037755755503432135, guid: 68011cc4d76e0a34b865b6f26aeb8ac4,
+    type: 3}
   <TargetDetectionParameters>k__BackingField:
     <DetectionRadius>k__BackingField: 10
   <TargetTrackingParameters>k__BackingField:

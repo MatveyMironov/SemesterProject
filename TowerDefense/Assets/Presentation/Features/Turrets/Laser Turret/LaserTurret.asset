@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ffe977e6442ba45bdcdfc191ca73a8, type: 3}
   m_Name: LaserTurret
   m_EditorClassIdentifier: 
+  <TurretPrefab>k__BackingField: {fileID: 7614959467569825351, guid: 5e079528af8b1b2468c595fc2adc75d3,
+    type: 3}
+  <TurretPreview>k__BackingField: {fileID: 8845071273185621606, guid: 617b687c3b5b29b429160856701c03d0,
+    type: 3}
   <TargetDetectionParameters>k__BackingField:
     <DetectionRadius>k__BackingField: 10
   <TargetTrackingParameters>k__BackingField:
