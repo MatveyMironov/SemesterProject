@@ -155,20 +155,6 @@ public class Construction : MonoBehaviour
     }
     #endregion
 
-    private void OnEnable()
-    {
-        constructionMenu.OnLaserTurretClicked += SelectLaserTurret;
-        constructionMenu.OnMissileTurretClicked += SelectMissileTurret;
-        constructionMenu.OnPlasmaTurretClicked += SelectPlasmaTurret;
-    }
-
-    private void OnDisable()
-    {
-        constructionMenu.OnLaserTurretClicked -= SelectLaserTurret;
-        constructionMenu.OnMissileTurretClicked -= SelectMissileTurret;
-        constructionMenu.OnPlasmaTurretClicked -= SelectPlasmaTurret;
-    }
-
     private void SelectLaserTurret()
     {
         SelectTurret(laserTurret);

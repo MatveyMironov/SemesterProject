@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,24 +8,13 @@ using UnityEngine.UI;
 public class ConstructionMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menuWindow;
-
-    [SerializeField] private Button laserTurretButton;
-    [SerializeField] private Button missileTurretButton;
-    [SerializeField] private Button plasmaTurretButton;
-
-    public event Action OnLaserTurretClicked;
-    public event Action OnMissileTurretClicked;
-    public event Action OnPlasmaTurretClicked;
+    [SerializeField] private Transform content;
 
     private EventSystem _eventSystem;
 
     private void Awake()
     {
         _eventSystem = EventSystem.current;
-
-        laserTurretButton.onClick.AddListener(() => OnLaserTurretClicked?.Invoke());
-        missileTurretButton.onClick.AddListener(() => OnMissileTurretClicked?.Invoke());
-        plasmaTurretButton.onClick.AddListener(() => OnPlasmaTurretClicked?.Invoke());
     }
 
     public void OpenMenu()
@@ -40,18 +30,10 @@ public class ConstructionMenu : MonoBehaviour
 
     [SerializeField] private Button constructionButtonPrefab;
 
-    public void CreateConstructionButtons(List<ConstructionBlueprint> blueprints)
+    public void CreateConstructionButton(ConstructionBlueprint blueprint)
     {
-        foreach (ConstructionBlueprint blueprint in blueprints)
-        {
-            Button button = Instantiate(constructionButtonPrefab);
-            button.onClick.AddListener(blueprint.SelectBlueprint);
-        }
-    }
-
-    [Serializable]
-    private class ConstructionButton
-    {
-        private Button _button;
+        Button button = Instantiate(constructionButtonPrefab, content);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = blueprint.TurretData.TurretName;
+        button.onClick.AddListener(blueprint.SelectBlueprint);
     }
 }

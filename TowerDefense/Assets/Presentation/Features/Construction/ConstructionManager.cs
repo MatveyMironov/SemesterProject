@@ -8,20 +8,39 @@ public class ConstructionManager : MonoBehaviour
     [SerializeField] private Construction construction;
     [SerializeField] private ConstructionMenu constructionMenu;
 
-    private void SelectTurret()
+    private void Start()
+    {
+        CreateBlueprints();
+    }
+
+    public void SelectTurret(TurretDataSO turretData)
     {
 
     }
 
-    
+    private void CreateBlueprints()
+    {
+        foreach (var turret in turrets)
+        {
+            ConstructionBlueprint blueprint = new(turret, this);
+            constructionMenu.CreateConstructionButton(blueprint);
+        }
+    }
 }
 
 public class ConstructionBlueprint
 {
-    TurretDataSO turretData;
+    public TurretDataSO TurretData { get; private set; }
+    private ConstructionManager _manager;
+
+    public ConstructionBlueprint(TurretDataSO turretData, ConstructionManager manager)
+    {
+        TurretData = turretData;
+        _manager = manager;
+    }
 
     public void SelectBlueprint()
     {
-
+        _manager.SelectTurret(TurretData);
     }
 }
