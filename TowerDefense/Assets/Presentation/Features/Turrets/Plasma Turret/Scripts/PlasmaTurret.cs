@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlasmaTurret : Turret
 {
     [Space]
-    [SerializeField] private PT_ParametersSO PTparameters;
+    [SerializeField] private PTDataSO PTparameters;
     [Space]
     [SerializeField] private PlasmaGun.PlasmaGunComponents plasmaGunComponents;
 

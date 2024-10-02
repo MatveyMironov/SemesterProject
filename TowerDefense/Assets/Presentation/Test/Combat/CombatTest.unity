@@ -2062,9 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26ba55069016da48bf1c9d4d7ef2029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTurrets:
-  - {fileID: 11400000, guid: c047fbb982de9d641a492ba5768a3583, type: 2}
-  - {fileID: 11400000, guid: ea9f00bc9a4fda9408a22e6b627dcb24, type: 2}
+  defaultTurrets: {fileID: 11400000, guid: 6d75f0be58b810949a34434bceca09ba, type: 2}
   construction: {fileID: 798596325}
   constructionMenu: {fileID: 1402647479}
 --- !u!4 &1404721902

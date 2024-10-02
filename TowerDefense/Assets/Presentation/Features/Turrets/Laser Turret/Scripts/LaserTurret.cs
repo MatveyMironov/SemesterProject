@@ -3,7 +3,7 @@ using UnityEngine;
 public class LaserTurret : Turret
 {
     [Space]
-    [SerializeField] private LT_ParametersSO LTparameters;
+    [SerializeField] private LTDataSO LTparameters;
     [Space]
     [SerializeField] private LaserGun.LaserGunComponents laserGunComponents;
 

@@ -7,7 +7,8 @@ namespace ConstructionSystem
     public class ConstructionManager : MonoBehaviour
     {
         [ContextMenuItem("Reset Available Turrets", "ResetAvailableBlueprints")]
-        [SerializeField] private List<TurretDataSO> defaultTurrets = new();
+        [SerializeField] private TurretDatasPackSO defaultTurrets;
+        //[SerializeField] private List<TurretDataSO> defaultTurrets = new();
 
         [Space]
         [SerializeField] private Construction construction;
@@ -21,7 +22,7 @@ namespace ConstructionSystem
         {
             ExitConstructionMode();
 
-            foreach (var turret in defaultTurrets)
+            foreach (var turret in defaultTurrets.TurretDatas)
             {
                 AddTurret(turret);
             }
@@ -91,7 +92,7 @@ namespace ConstructionSystem
                 RemoveBlueprint(_availableBlueprints[i]);
             }
 
-            foreach (var turret in defaultTurrets)
+            foreach (var turret in defaultTurrets.TurretDatas)
             {
                 AddTurret(turret);
             }

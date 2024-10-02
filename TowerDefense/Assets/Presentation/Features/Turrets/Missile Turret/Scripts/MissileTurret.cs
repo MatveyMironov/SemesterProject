@@ -3,7 +3,7 @@ using UnityEngine;
 public class MissileTurret : Turret
 {
     [Space]
-    [SerializeField] private MT_ParametersSO MTparameters;
+    [SerializeField] private MTDataSO MTparameters;
     [Space]
     [SerializeField] private MissileLauncher.MissileLauncherComponents missileLauncherComponents;
 
