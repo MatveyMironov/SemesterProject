@@ -27,7 +27,7 @@ MonoBehaviour:
     <MaxVerticalAngle>k__BackingField: 15
     <VerticalTurningSpeed>k__BackingField: 180
   <PlasmaGunParameters>k__BackingField:
-    <RechargingTime>k__BackingField: 3
+    <RechargingTime>k__BackingField: 5
     <PlasmoidPrefab>k__BackingField: {fileID: 8400862676475099532, guid: e811de19f08fe8642bc64c43e639f688,
       type: 3}
     <PlasmoidParameters>k__BackingField:
@@ -35,8 +35,8 @@ MonoBehaviour:
       <ExplosionRadius>k__BackingField: 3
       <ExplosionDamage>k__BackingField: 25
       <PlasmaCloudRadius>k__BackingField: 3
-      <PlasmaCloudDPS>k__BackingField: 15
-      <PlasmaCloudDecayTime>k__BackingField: 3
+      <PlasmaCloudDPS>k__BackingField: 5
+      <PlasmaCloudDecayTime>k__BackingField: 5
       <AffectedLayers>k__BackingField:
         serializedVersion: 2
         m_Bits: 4294967295

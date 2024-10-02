@@ -27,6 +27,6 @@ MonoBehaviour:
     <MaxVerticalAngle>k__BackingField: 15
     <VerticalTurningSpeed>k__BackingField: 180
   <LaserGunParameters>k__BackingField:
-    <RechargingTime>k__BackingField: 5
-    <DamagePerSecond>k__BackingField: 50
+    <RechargingTime>k__BackingField: 8
+    <DamagePerSecond>k__BackingField: 200
     <MaxEmittingTime>k__BackingField: 2

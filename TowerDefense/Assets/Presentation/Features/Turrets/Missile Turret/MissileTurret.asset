@@ -27,13 +27,13 @@ MonoBehaviour:
     <MaxVerticalAngle>k__BackingField: 15
     <VerticalTurningSpeed>k__BackingField: 180
   <MissileLauncherParameters>k__BackingField:
-    <RechargingTime>k__BackingField: 1
+    <RechargingTime>k__BackingField: 0.5
     <MissilePrefab>k__BackingField: {fileID: 9047181280845537842, guid: 3849be2dc59ac9045962b7675b217294,
       type: 3}
     <MissileParameters>k__BackingField:
       <MovementSpeed>k__BackingField: 20
       <AngularSpeed>k__BackingField: 720
-      <Damage>k__BackingField: 20
+      <Damage>k__BackingField: 15
       <FlightSound>k__BackingField: {fileID: 0}
       <ExplosionPrefab>k__BackingField: {fileID: 8131245264874967259, guid: f76a3c2b71840bd4c9a03833e9df1103,
         type: 3}
