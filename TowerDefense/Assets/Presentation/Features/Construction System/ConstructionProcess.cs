@@ -2,12 +2,11 @@ using UnityEngine;
 
 namespace ConstructionSystem
 {
-    public class Construction : MonoBehaviour
+    public class ConstructionProcess : MonoBehaviour
     {
         [Header("Construction Sites")]
         [SerializeField] private Camera mainCamera;
         [SerializeField] private LayerMask constructionLayers;
-        [SerializeField] private ConstructionSite[] constructionSites = new ConstructionSite[0];
 
         private TurretDataSO _selectedTurret;
         private Vector3 _previousMousePosition;
@@ -52,28 +51,6 @@ namespace ConstructionSystem
             }
         }
 
-        public void ShowConstructionSites()
-        {
-            foreach (var constructionSite in constructionSites)
-            {
-                if (constructionSite != null)
-                {
-                    constructionSite.ShowConstructionSite();
-                }
-            }
-        }
-
-        public void HideConstructionSites()
-        {
-            foreach (var constructionSite in constructionSites)
-            {
-                if (constructionSite != null)
-                {
-                    constructionSite.HideConstructionSite();
-                }
-            }
-        }
-
         public void SelectTurret(TurretDataSO turret)
         {
             _selectedTurret = turret;
@@ -85,32 +62,22 @@ namespace ConstructionSystem
             if (_selectedTurret == null)
                 return;
 
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = mainCamera.nearClipPlane;
-
-            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000, constructionLayers))
+            if (!_highlitedSite.IsOccupied)
             {
-                if (hit.collider.TryGetComponent(out ConstructionSite constructionSite))
-                {
-                    if (!constructionSite.IsOccupied)
-                    {
-                        BuildTurret(constructionSite, _selectedTurret.TurretPrefab);
-                    }
-                }
+                ConstructTurret(_highlitedSite, _selectedTurret.TurretPrefab);
             }
         }
 
-        private void BuildTurret(ConstructionSite constructionSite, Turret turretPrefab)
+        private void ConstructTurret(ConstructionSite constructionSite, Turret turretPrefab)
         {
             if (!constructionSite.IsOccupied)
             {
                 constructionSite.Build(turretPrefab);
-                AbortBuilding();
+                AbortConstruction();
             }
         }
 
-        public void AbortBuilding()
+        public void AbortConstruction()
         {
             _selectedTurret = null;
             _highlitedSite = null;

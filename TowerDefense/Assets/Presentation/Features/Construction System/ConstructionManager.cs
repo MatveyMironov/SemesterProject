@@ -8,11 +8,13 @@ namespace ConstructionSystem
     {
         [ContextMenuItem("Reset Available Turrets", "ResetAvailableBlueprints")]
         [SerializeField] private TurretDatasPackSO defaultTurrets;
-        //[SerializeField] private List<TurretDataSO> defaultTurrets = new();
+        //[SerializeField] private List<TurretDataSO> defaultTurrets = new(); //Alternative way
 
         [Space]
-        [SerializeField] private Construction construction;
+        [SerializeField] private ConstructionProcess constructionProcess;
         [SerializeField] private ConstructionMenu constructionMenu;
+        //[SerializeField] private ResourceManager resourceManager;
+        [SerializeField] private ConstructionSitesManager constructionSitesManager;
 
         private List<ConstructionBlueprint> _availableBlueprints = new();
 
@@ -30,27 +32,27 @@ namespace ConstructionSystem
 
         public void EnterConstructionMode()
         {
-            construction.ShowConstructionSites();
+            constructionSitesManager.ShowConstructionSites();
             constructionMenu.OpenMenu();
             IsConstructionModeEntered = true;
         }
 
         public void ExitConstructionMode()
         {
-            construction.HideConstructionSites();
-            construction.AbortBuilding();
+            constructionSitesManager.HideConstructionSites();
+            constructionProcess.AbortConstruction();
             constructionMenu.CloseMenu();
             IsConstructionModeEntered = false;
         }
 
         public void SelectConstructionSite()
         {
-            construction.SelectConstructionSite();
+            constructionProcess.SelectConstructionSite();
         }
 
         public void SelectBlueprint(ConstructionBlueprint blueprint)
         {
-            construction.SelectTurret(blueprint.TurretData);
+            constructionProcess.SelectTurret(blueprint.TurretData);
         }
 
         #region Available Blueprints

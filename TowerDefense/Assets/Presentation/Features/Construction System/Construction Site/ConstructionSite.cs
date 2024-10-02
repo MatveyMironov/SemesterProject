@@ -4,7 +4,7 @@ public class ConstructionSite : MonoBehaviour
 {
     [SerializeField] private GameObject visuals;
 
-    [HideInInspector] public bool IsOccupied { get; private set; }
+    public bool IsOccupied { get; private set; }
 
     public void ShowConstructionSite()
     {
