@@ -1,15 +1,17 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ConstructionManager : MonoBehaviour
 {
+    [ContextMenuItem("Reset Available Turrets", "ResetAvailableTurrets")]
     [SerializeField] private List<TurretDataSO> defaultTurrets = new();
 
     [Space]
     [SerializeField] private Construction construction;
     [SerializeField] private ConstructionMenu constructionMenu;
 
-    private List<TurretDataSO> _availableTurrets = new();
+    private List<ConstructionBlueprint> _availableBlueprints = new();
 
     public bool IsConstructionModeEntered { get; private set; }
 
@@ -43,51 +45,63 @@ public class ConstructionManager : MonoBehaviour
         construction.SelectConstructionSite();
     }
 
-    public void SelectTurret(TurretDataSO turretData)
+    public void SelectBlueprint(ConstructionBlueprint blueprint)
     {
-        construction.SelectTurret(turretData);
+        construction.SelectTurret(blueprint.TurretData);
     }
 
     public void AddTurret(TurretDataSO turretData)
     {
-        if (CheckIfAlreadyContains(turretData))
+        ConstructionBlueprint blueprint = _availableBlueprints.Find(turret => turret.TurretData == turretData);
+
+        if (blueprint != null)
         {
-            throw new System.Exception("Already Contains that turret");
+            throw new System.Exception("Available turrets already contain such turret");
         }
 
-        ConstructionBlueprint blueprint = new(turretData, this);
-        constructionMenu.CreateConstructionButton(blueprint);
-
-        _availableTurrets.Add(turretData);
+        blueprint = new(turretData);
+        blueprint.OnBlueprintSelected += SelectBlueprint;
+        _availableBlueprints.Add(blueprint);
+        constructionMenu.AddConstructionButton(blueprint);
     }
 
-    private bool CheckIfAlreadyContains(TurretDataSO turretData)
+    public void RemoveTurret(TurretDataSO turretData)
     {
-        foreach(TurretDataSO availableTurret in _availableTurrets)
+        ConstructionBlueprint blueprint = _availableBlueprints.Find(blueprint => blueprint.TurretData == turretData);
+
+        if (blueprint == null)
         {
-            if (turretData == availableTurret)
-            {
-                return true;
-            }
+            throw new System.Exception("No such turret in available turrets");
         }
 
-        return false;
+        constructionMenu.RemoveConstructionButton(blueprint);
+        _availableBlueprints.Remove(blueprint);
+
+        Debug.Log("removed");
+    }
+
+    public void ResetAvailableTurrets()
+    {
+        for (int i = _availableBlueprints.Count - 1; i >= 0; i--)
+        {
+            RemoveTurret(_availableBlueprints[i].TurretData);
+        }
+
+        foreach (var turret in defaultTurrets)
+        {
+            AddTurret(turret);
+        }
     }
 }
 
 public class ConstructionBlueprint
 {
     public TurretDataSO TurretData { get; private set; }
-    private ConstructionManager _manager;
 
-    public ConstructionBlueprint(TurretDataSO turretData, ConstructionManager manager)
+    public Action<ConstructionBlueprint> OnBlueprintSelected;
+
+    public ConstructionBlueprint(TurretDataSO turretData)
     {
         TurretData = turretData;
-        _manager = manager;
-    }
-
-    public void SelectBlueprint()
-    {
-        _manager.SelectTurret(TurretData);
     }
 }
