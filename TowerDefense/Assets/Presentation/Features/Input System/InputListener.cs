@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +5,7 @@ public class InputListener : MonoBehaviour
 {
     private InputActions _inputActions;
 
-    [SerializeField] private Construction construction;
+    [SerializeField] private InputManager inputManager;
 
     private void Awake()
     {
@@ -24,12 +23,12 @@ public class InputListener : MonoBehaviour
 
     private void OnToggleConstruction(InputAction.CallbackContext callbackContext)
     {
-        construction.ToggleConstructionMode();
+        inputManager.ToggleConstructionMode();
     }
 
     private void OnSelect(InputAction.CallbackContext callbackContext)
     {
-        construction.SelectConstructionSite();
+        inputManager.SelectConstructionSite();
     }
 
     private void OnEnable()

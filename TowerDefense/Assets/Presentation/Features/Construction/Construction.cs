@@ -2,32 +2,16 @@ using UnityEngine;
 
 public class Construction : MonoBehaviour
 {
-    [SerializeField] private ConstructionSite[] constructionSites = new ConstructionSite[0];
-
-    [Header("Turrets")]
-    [SerializeField] private LT_ParametersSO laserTurret;
-    [SerializeField] private MT_ParametersSO missileTurret;
-    [SerializeField] private PT_ParametersSO plasmaTurret;
-
-    [Space]
+    [Header("Construction Sites")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask constructionLayers;
-
-    [Space]
-    [SerializeField] private ConstructionMenu constructionMenu;
-
-    private bool _isConstructionModeEntered;
+    [SerializeField] private ConstructionSite[] constructionSites = new ConstructionSite[0];
 
     private TurretDataSO _selectedTurret;
     private Vector3 _previousMousePosition;
     private ConstructionSite _highlitedSite;
 
     private PreviewSystem _previewSystem = new();
-
-    private void Start()
-    {
-        ExitConstructionMode();
-    }
 
     private void Update()
     {
@@ -66,20 +50,7 @@ public class Construction : MonoBehaviour
         }
     }
 
-    #region Construction Mode
-    public void ToggleConstructionMode()
-    {
-        if (_isConstructionModeEntered)
-        {
-            ExitConstructionMode();
-        }
-        else
-        {
-            EnterConstructionMode();
-        }
-    }
-
-    private void EnterConstructionMode()
+    public void ShowConstructionSites()
     {
         foreach (var constructionSite in constructionSites)
         {
@@ -88,12 +59,9 @@ public class Construction : MonoBehaviour
                 constructionSite.ShowConstructionSite();
             }
         }
-
-        constructionMenu.OpenMenu();
-        _isConstructionModeEntered = true;
     }
 
-    private void ExitConstructionMode()
+    public void HideConstructionSites()
     {
         foreach (var constructionSite in constructionSites)
         {
@@ -102,15 +70,8 @@ public class Construction : MonoBehaviour
                 constructionSite.HideConstructionSite();
             }
         }
-
-        AbortBuilding();
-
-        constructionMenu.CloseMenu();
-        _isConstructionModeEntered = false;
     }
-    #endregion
 
-    #region Building
     public void SelectTurret(TurretDataSO turret)
     {
         _selectedTurret = turret;
@@ -147,26 +108,10 @@ public class Construction : MonoBehaviour
         }
     }
 
-    private void AbortBuilding()
+    public void AbortBuilding()
     {
         _selectedTurret = null;
         _highlitedSite = null;
         _previewSystem.DestroyPreview();
-    }
-    #endregion
-
-    private void SelectLaserTurret()
-    {
-        SelectTurret(laserTurret);
-    }
-
-    private void SelectMissileTurret()
-    {
-        SelectTurret(missileTurret);
-    }
-
-    private void SelectPlasmaTurret()
-    {
-        SelectTurret(plasmaTurret);
     }
 }

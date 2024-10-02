@@ -8,14 +8,37 @@ public class ConstructionManager : MonoBehaviour
     [SerializeField] private Construction construction;
     [SerializeField] private ConstructionMenu constructionMenu;
 
+    public bool IsConstructionModeEntered { get; private set; }
+
     private void Start()
     {
         CreateBlueprints();
+        ExitConstructionMode();
+    }
+
+    public void EnterConstructionMode()
+    {
+        construction.ShowConstructionSites();
+        constructionMenu.OpenMenu();
+        IsConstructionModeEntered = true;
+    }
+
+    public void ExitConstructionMode()
+    {
+        construction.HideConstructionSites();
+        construction.AbortBuilding();
+        constructionMenu.CloseMenu();
+        IsConstructionModeEntered = false;
+    }
+
+    public void SelectConstructionSite()
+    {
+        construction.SelectConstructionSite();
     }
 
     public void SelectTurret(TurretDataSO turretData)
     {
-
+        construction.SelectTurret(turretData);
     }
 
     private void CreateBlueprints()
