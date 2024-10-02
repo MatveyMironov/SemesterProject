@@ -3,17 +3,24 @@ using UnityEngine;
 
 public class ConstructionManager : MonoBehaviour
 {
-    [SerializeField] private List<TurretDataSO> turrets = new();
+    [SerializeField] private List<TurretDataSO> defaultTurrets = new();
 
+    [Space]
     [SerializeField] private Construction construction;
     [SerializeField] private ConstructionMenu constructionMenu;
+
+    private List<TurretDataSO> _availableTurrets = new();
 
     public bool IsConstructionModeEntered { get; private set; }
 
     private void Start()
     {
-        CreateBlueprints();
         ExitConstructionMode();
+
+        foreach (var turret in defaultTurrets)
+        {
+            AddTurret(turret);
+        }
     }
 
     public void EnterConstructionMode()
@@ -41,13 +48,30 @@ public class ConstructionManager : MonoBehaviour
         construction.SelectTurret(turretData);
     }
 
-    private void CreateBlueprints()
+    public void AddTurret(TurretDataSO turretData)
     {
-        foreach (var turret in turrets)
+        if (CheckIfAlreadyContains(turretData))
         {
-            ConstructionBlueprint blueprint = new(turret, this);
-            constructionMenu.CreateConstructionButton(blueprint);
+            throw new System.Exception("Already Contains that turret");
         }
+
+        ConstructionBlueprint blueprint = new(turretData, this);
+        constructionMenu.CreateConstructionButton(blueprint);
+
+        _availableTurrets.Add(turretData);
+    }
+
+    private bool CheckIfAlreadyContains(TurretDataSO turretData)
+    {
+        foreach(TurretDataSO availableTurret in _availableTurrets)
+        {
+            if (turretData == availableTurret)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 
