@@ -1,14 +1,17 @@
+using System;
 using UnityEngine;
 
 public class DroneMovement
 {
     private Transform _droneTransform;
-    private DroneProgram _droneProgram;
+    private Drone.DroneProgram _droneProgram;
     private DroneDataSO _droneData;
 
     private int _nextWaypointIndex = 0;
 
-    public DroneMovement(Transform droneTransform, DroneProgram droneProgram, DroneDataSO droneData)
+    public event Action OnFinalWaypointReached;
+
+    public DroneMovement(Transform droneTransform, Drone.DroneProgram droneProgram, DroneDataSO droneData)
     {
         _droneTransform = droneTransform;
         _droneProgram = droneProgram;
@@ -53,7 +56,7 @@ public class DroneMovement
         }
         else
         {
-            _nextWaypointIndex = 0;
+            OnFinalWaypointReached?.Invoke();
         }
 
     }

@@ -1,13 +1,12 @@
-using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class DroneSpawner : MonoBehaviour
 {
     [SerializeField] private SpawnerDataSO spawnerData;
     [Space]
     [SerializeField] private Transform spawnPoint;
     [Space]
-    [SerializeField] private DroneProgram program;
+    [SerializeField] private Drone.DroneProgram program;
 
     // So that drones always spawn in correct distance from each other
     private Vector3 _adjustedSpawnPosition;

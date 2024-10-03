@@ -19,6 +19,7 @@ public class Drone : MonoBehaviour
     {
         _program = program;
         _droneMovement = new(transform, program, droneData);
+        _droneMovement.OnFinalWaypointReached += AttackPlayerBase;
         _isMoving = true;
     }
 
@@ -26,10 +27,22 @@ public class Drone : MonoBehaviour
     {
         Destroy(gameObject);
     }
-}
 
-[Serializable]
-public class DroneProgram
-{
-    [SerializeField] public Transform[] Waypoints = new Transform[0];
+    private void AttackPlayerBase()
+    {
+        _program.PlayerBase.DealDamage(droneData.DamageToPlayer);
+        Die();
+    }
+
+    private void OnDisable()
+    {
+        _droneMovement.OnFinalWaypointReached -= AttackPlayerBase;
+    }
+
+    [Serializable]
+    public class DroneProgram
+    {
+        [field: SerializeField] public Transform[] Waypoints { get; private set; } = new Transform[0];
+        [field: SerializeField] public PlayerBase PlayerBase { get; private set; }
+    }
 }

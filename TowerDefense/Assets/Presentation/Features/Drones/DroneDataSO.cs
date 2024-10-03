@@ -5,4 +5,5 @@ public class DroneDataSO : ScriptableObject
 {
     [field: SerializeField] public Drone Prefab { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
+    [field: SerializeField] public int DamageToPlayer { get; private set; }
 }

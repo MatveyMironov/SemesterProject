@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+[Serializable]
+public class PlayerHealth
 {
-    [SerializeField] private int defaultHealth;
-
+    [field: SerializeField] public int DefaultHealth { get; private set; }
     public int CurrentHealth { get; private set; }
 
-    public void RemoveHealth(int amount)
+    public event Action OnHealthAmountChanged;
+    public event Action OnHealthExpired;
+
+    public void SubtractHealth(int amount)
     {
         if (CurrentHealth < amount)
         {
@@ -17,14 +21,16 @@ public class PlayerHealth : MonoBehaviour
             CurrentHealth -= amount;
         }
 
+        OnHealthAmountChanged?.Invoke();
+
         if (CurrentHealth <= 0)
         {
-
+            OnHealthExpired?.Invoke();
         }
     }
 
-    private void DestroyBase()
+    public void ResetHealth()
     {
-
+        CurrentHealth = DefaultHealth;
     }
 }
