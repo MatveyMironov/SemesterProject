@@ -1,27 +1,25 @@
-using System;
 using UnityEngine;
 
-[Serializable]
 public class DroneMovement
 {
-    [SerializeField] private Transform drone;
+    private Transform _droneTransform;
+    private DroneProgram _droneProgram;
+    private DroneDataSO _droneData;
 
-    [SerializeField] private float movementSpeed;
+    private int _nextWaypointIndex = 0;
 
-    [Space]
-    [SerializeField] private Transform[] waypoints = new Transform[0];
-    [SerializeField] private bool isMoving;
-
-    private int nextWaypointIndex = 0;
-
-    public void Tick()
+    public DroneMovement(Transform droneTransform, DroneProgram droneProgram, DroneDataSO droneData)
     {
-        if (!isMoving)
-            return;
+        _droneTransform = droneTransform;
+        _droneProgram = droneProgram;
+        _droneData = droneData;
+    }
 
-        Vector3 nextWaypointPosition = waypoints[nextWaypointIndex].position;
+    public void MovementTick()
+    {
+        Vector3 nextWaypointPosition = _droneProgram.Waypoints[_nextWaypointIndex].position;
 
-        if (drone.position == nextWaypointPosition)
+        if (_droneTransform.position == nextWaypointPosition)
         {
             SelectNextWaypoint();
         }
@@ -31,43 +29,32 @@ public class DroneMovement
 
     private void MoveTo(Vector3 tragetPosition)
     {
-        Vector3 lookPosition = tragetPosition - drone.position;
+        Vector3 lookPosition = tragetPosition - _droneTransform.position;
 
         if (lookPosition != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(lookPosition);
 
-            if (drone.rotation != lookRotation)
+            if (_droneTransform.rotation != lookRotation)
             {
-                drone.rotation = lookRotation;
+                _droneTransform.rotation = lookRotation;
             }
         }
         
 
-        drone.position = Vector3.MoveTowards(drone.position, tragetPosition, movementSpeed * Time.deltaTime);
+        _droneTransform.position = Vector3.MoveTowards(_droneTransform.position, tragetPosition, _droneData.MovementSpeed * Time.deltaTime);
     }
 
     private void SelectNextWaypoint()
     {
-        if (nextWaypointIndex < waypoints.Length - 1)
+        if (_nextWaypointIndex < _droneProgram.Waypoints.Length - 1)
         {
-            nextWaypointIndex++;
+            _nextWaypointIndex++;
         }
         else
         {
-            nextWaypointIndex = 0;
+            _nextWaypointIndex = 0;
         }
 
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (isMoving)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(waypoints[nextWaypointIndex].position, 0.1f);
-        }
-    }
-#endif
 }

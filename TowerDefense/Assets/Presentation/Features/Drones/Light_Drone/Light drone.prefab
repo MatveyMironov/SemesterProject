@@ -112,21 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a437d4ea06f659f409c1bf918a36d581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droneMovement:
-    drone: {fileID: 5404050848811460911}
-    movementSpeed: 3
-    waypoints:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    isMoving: 1
+  droneData: {fileID: 11400000, guid: 0ef399f54e617814c8dc348cb74d5284, type: 2}
 --- !u!1 &1205865647576897942
 GameObject:
   m_ObjectHideFlags: 0
