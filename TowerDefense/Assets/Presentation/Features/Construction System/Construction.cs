@@ -4,6 +4,8 @@ namespace ConstructionSystem
 {
     public class Construction : MonoBehaviour
     {
+        [SerializeField] private ResourceSystem.ResourceManager resourceManager;
+
         [Header("Construction Sites")]
         [SerializeField] private Camera mainCamera;
         [SerializeField] private LayerMask constructionLayers;
@@ -95,18 +97,26 @@ namespace ConstructionSystem
                 {
                     if (!constructionSite.IsOccupied)
                     {
-                        BuildTurret(constructionSite, _selectedTurret.TurretPrefab);
+                        BuildTurret(constructionSite, _selectedTurret);
                     }
                 }
             }
         }
 
-        private void BuildTurret(ConstructionSite constructionSite, Turret turretPrefab)
+        private void BuildTurret(ConstructionSite constructionSite, TurretDataSO turretData)
         {
             if (!constructionSite.IsOccupied)
             {
-                constructionSite.Build(turretPrefab);
-                AbortBuilding();
+                if (resourceManager.ResourceAmount >= turretData.TurretCost)
+                {
+                    resourceManager.SubtractResource(turretData.TurretCost);
+                    constructionSite.Build(turretData.TurretPrefab);
+                    AbortBuilding();
+                }
+                else
+                {
+                    Debug.Log("Not enough resource for that turret");
+                }
             }
         }
 
