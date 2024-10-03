@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MissileTurret
   m_EditorClassIdentifier: 
   <TurretName>k__BackingField: Missile Turret
+  <TurretCost>k__BackingField: 20
   <TurretPrefab>k__BackingField: {fileID: 1840398199433101381, guid: 99c551e94e529b041ae1a8655211ebc7,
     type: 3}
   <TurretPreview>k__BackingField: {fileID: 5369663099792785549, guid: a33b6edab5ac83e468470f41652d30b9,
