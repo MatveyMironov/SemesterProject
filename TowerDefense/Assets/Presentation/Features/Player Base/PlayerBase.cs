@@ -6,6 +6,11 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private PlayerHealth health;
     [SerializeField] private PlayerHealthBar healthbar;
 
+    private void Awake()
+    {
+        health.ResetHealth();
+    }
+
     private void DestroyBase()
     {
         baseObject.SetActive(false);
@@ -18,7 +23,7 @@ public class PlayerBase : MonoBehaviour
 
     private void DisplayHealthEffects()
     {
-        healthbar.DisplayHealth(health.CurrentHealth / health.DefaultHealth);
+        healthbar.DisplayHealth((float)health.CurrentHealth / health.DefaultHealth);
     }
 
     private void OnEnable()
