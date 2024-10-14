@@ -8,7 +8,7 @@ public class PlayerBase : MonoBehaviour
 
     private void Awake()
     {
-        health.ResetHealth();
+        ResetHealth();
     }
 
     private void DestroyBase()
@@ -24,6 +24,12 @@ public class PlayerBase : MonoBehaviour
     private void DisplayHealthEffects()
     {
         healthbar.DisplayHealth((float)health.CurrentHealth / health.DefaultHealth);
+    }
+
+    [ContextMenu("Reset health")]
+    public void ResetHealth()
+    {
+        health.ResetHealth();
     }
 
     private void OnEnable()

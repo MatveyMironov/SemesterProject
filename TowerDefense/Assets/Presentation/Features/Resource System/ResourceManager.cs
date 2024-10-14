@@ -5,7 +5,6 @@ namespace ResourceSystem
 {
     public class ResourceManager : MonoBehaviour
     {
-        [ContextMenuItem("Reset resources", "ResetResources")]
         [SerializeField] private int defaultResourceAmount;
         [SerializeField] private int maxResourceAmount;
 
@@ -46,6 +45,7 @@ namespace ResourceSystem
             OnResourceAmountChanged?.Invoke();
         }
 
+        [ContextMenu("ResetResources")]
         private void ResetResource()
         {
             ResourceAmount = defaultResourceAmount;

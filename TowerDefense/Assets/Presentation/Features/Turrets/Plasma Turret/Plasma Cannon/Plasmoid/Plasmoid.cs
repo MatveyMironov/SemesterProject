@@ -1,46 +1,31 @@
 using System;
 using UnityEngine;
 
-public class Plasmoid : MonoBehaviour
+public class Plasmoid : Projectile
 {
     [SerializeField] private PlasmaCloud plasmaCloudPrefab;
 
     private PlasmoidParameters _parameters;
-    private bool _hasParameters;
+    private bool _hasParameters { get { return _parameters != null; } }
 
-    private float _explosionTime;
-    private float _lifeTime;
-
-    private void FixedUpdate()
+    public void SetParameters(PlasmoidParameters parameters, float explosionTime)
     {
-        if (!_hasParameters)
+        if (_hasParameters)
             return;
 
-        Move();
-        CountLifeTime();
+        SetParameters(parameters.ProjectileParameters, explosionTime);
+
+        _parameters = parameters;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollision(RaycastHit hit)
     {
-        if (!_hasParameters)
-            return;
-
         Explode();
     }
 
-    private void Move()
+    protected override void OnLifeTimeExpired()
     {
-        transform.position += transform.forward * _parameters.Speed * Time.fixedDeltaTime;
-    }
-
-    private void CountLifeTime()
-    {
-        _lifeTime += Time.fixedDeltaTime;
-
-        if (_lifeTime >= _explosionTime)
-        {
-            Explode();
-        }
+        Explode();
     }
 
     private void Explode()
@@ -59,43 +44,16 @@ public class Plasmoid : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetParameters(PlasmoidParameters parameters, float explosionTime)
-    {
-        if (_hasParameters)
-            return;
-
-        _parameters = parameters;
-        _explosionTime = explosionTime;
-        _hasParameters = true;
-    }
-
     [Serializable]
     public class PlasmoidParameters
     {
-        [field: SerializeField] public float Speed { get; private set; }
+        [field: SerializeField] public ProjectileParameters ProjectileParameters { get; private set; }
+
         [field: SerializeField] public float ExplosionRadius { get; private set; }
         [field: SerializeField] public int ExplosionDamage { get; private set; }
         [field: SerializeField] public float PlasmaCloudRadius { get; private set; }
         [field: SerializeField] public int PlasmaCloudDPS { get; private set; }
         [field: SerializeField] public float PlasmaCloudDecayTime { get; private set; }
         [field: SerializeField] public LayerMask AffectedLayers { get; private set; }
-
-        public PlasmoidParameters(
-            float speed,
-            float explosionRadius,
-            int explosionDamage,
-            float plasmaCloudRadius,
-            int plasmaCloudDPS,
-            float plasmaCloudDecayTime,
-            LayerMask affectedLayers)
-        {
-            Speed = speed;
-            ExplosionRadius = explosionRadius;
-            ExplosionDamage = explosionDamage;
-            PlasmaCloudRadius = plasmaCloudRadius;
-            PlasmaCloudDPS = plasmaCloudDPS;
-            PlasmaCloudDecayTime = plasmaCloudDecayTime;
-            AffectedLayers = affectedLayers;
-        }
     }
 }

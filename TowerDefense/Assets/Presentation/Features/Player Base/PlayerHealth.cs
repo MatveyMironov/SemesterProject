@@ -32,5 +32,6 @@ public class PlayerHealth
     public void ResetHealth()
     {
         CurrentHealth = DefaultHealth;
+        OnHealthAmountChanged?.Invoke();
     }
 }

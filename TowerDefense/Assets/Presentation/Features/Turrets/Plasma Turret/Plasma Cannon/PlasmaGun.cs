@@ -20,7 +20,7 @@ public class PlasmaGun : Weapon
             return;
 
         Plasmoid plasmoid = UnityEngine.Object.Instantiate(_parameters.PlasmoidPrefab, _components.Muzzle.position, _components.Muzzle.rotation);
-        float plasmoidExplosionTime = (point - _components.Muzzle.position).magnitude / _parameters.PlasmoidParameters.Speed;
+        float plasmoidExplosionTime = (point - _components.Muzzle.position).magnitude / _parameters.PlasmoidParameters.ProjectileParameters.Speed;
         plasmoid.SetParameters(_parameters.PlasmoidParameters, plasmoidExplosionTime);
 
         _needsRecharging = true;
